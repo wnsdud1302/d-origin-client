@@ -19,7 +19,7 @@ RUN \
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /
-# COPY --from=deps /node_modules ./node_modules
+ COPY --from=deps /node_modules ./node_modules
 COPY . .
 
 RUN \
