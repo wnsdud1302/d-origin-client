@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components{
+
+    .projectImage {
+        transition: all 0.3s ease-in-out;
+    }
+
+    .projectImage:hover {
+        transform: scale(1.03);
+    }
+
+}

@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+
+    .box{
+        display: block;
+        height: calc(.6 * 87px);
+        width: calc(.6 * 104px);
+
+
+    }
+
+    .about {
+        background: no-repeat;
+        background-image: url(../public/index60.png);
+        background-position: 0 0;
+    }
+
+    .contact {
+        background-image: url(../public/index60.png);
+        background-position: calc(.6 *(-104px)) 0;
+    }
+
+    .recruit {
+        background-image: url(../public/index60.png);
+        background-position: calc(.6 * 2 * (-104px)) 0;
+    }
+
+    .news {
+        background-image: url(../public/index60.png);
+        background-position: -0 calc( .6 * (-87px));
+    }
+
+    .project {
+        background: url(../public/index60.png);
+        background-position: calc(.6 *(-104px)) calc(.6 * (-87px));
+    }
+
+
+    .navItem{
+        display: block;
+        filter: brightness(10);
+        padding-right: 20px;
+        padding-left: 20px;
+        transition: all 0.2s linear;
+        
+    }
+    .navItem:hover{
+        color: gray;
+        filter: brightness(1); 
+    }
+}

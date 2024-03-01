@@ -1,0 +1,21 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .newsTitle {
+        @apply text-2xl font-bold text-center;
+
+    }
+    
+    .newsImage{
+        overflow: hidden;
+        transition: all ease 0.5s;
+    }
+
+    .newsImage :hover {
+        transform: scale(1.03);
+    }
+    
+}
