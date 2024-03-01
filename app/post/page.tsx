@@ -5,7 +5,7 @@ import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-export default async function page(req: NextRequest){
+export default async function page(){
 
     const session = await getServerSession()
 
