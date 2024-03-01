@@ -15,11 +15,10 @@ RUN \
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
-COPY --from=deps /node_modules ./node_modules
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 RUN \
-  npm ci && \
   npx prisma generate && \
   npm run build
 
@@ -47,7 +46,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
-EXPOSE 80
+EXPOSE 3000
 
 ENV PORT 80
 # set hostname to localhost
@@ -55,4 +54,4 @@ ENV HOSTNAME "0.0.0.0"
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
-# CMD ["node", "server.js"]
+CMD ["node", "server.js"]
