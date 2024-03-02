@@ -21,7 +21,7 @@ export default function Page() {
         <div className='bg-white w-[60px] h-[5px] mx-auto mb-[10px] relative'/>
         <h1 className='text-2xl font-bold text-center'>Project</h1>
         <div className=''>
-          {data ?
+          {data.content ?
             <div>
               <ProejctList data={data.content}/> 
               <div className="flex justify-center mt-[10px] bottom-0">

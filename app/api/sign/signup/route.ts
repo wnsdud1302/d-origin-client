@@ -9,17 +9,36 @@ interface RequsetBody {
     password: string
 }
 
+// export async function POST(req: NextRequest){
+//     const body: RequsetBody = await req.json()
+
+//     const user = await prisma.user.create({
+//         data:{
+//             name: body.name,
+//             email: body.email,
+//             password: await bcrypt.hash(body.password, 12),
+//         },
+//     })
+
+//     const { password, ...result} = user
+//     return NextResponse.json(result)
+// }
+
 export async function POST(req: NextRequest){
-    const body: RequsetBody = await req.json()
 
-    const user = await prisma.user.create({
-        data:{
-            name: body.name,
-            email: body.email,
-            password: await bcrypt.hash(body.password, 12),
-        },
+    const body = await req.json()
+
+    try{
+    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/sign/login`, {
+        method: 'POST',
+        body: body,
+        headers: { "Content-Type": "application/json" }
     })
+    const user = await res.json()
 
-    const { password, ...result} = user
-    return NextResponse.json(result)
+    return NextResponse.json({user})
+    } catch (error){
+        return NextResponse.error()
+    }
+
 }
