@@ -38,6 +38,8 @@ const handler = NextAuth({
     },
     callbacks: {
         async redirect({url, baseUrl}){
+            console.log(`url: ${url}`)
+            console.log(`baseUrl: ${baseUrl}`)
             return `${baseUrl}/post`
         },
 
