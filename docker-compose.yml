@@ -1,0 +1,36 @@
+services:
+  mysql-conatiner:
+    image: mysql:8.0.33
+    container_name: mysql
+    networks:
+      mysql-networks:
+        ipv4_address: 172.15.0.2
+    environment:
+      MYSQL_ROOT_PASSWORD: ThisisDoriginDatabase
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - /tmp:/tmp
+  my-server:
+    image: dorigin-server:latest
+    container_name: my-server
+    ports:
+      - "8080:8080"
+    networks:
+      mysql-networks:
+        ipv4_address: 172.15.0.3
+  my-client:
+    image: dorigin-frontend:latest
+    container_name: my-client
+    ports:
+      - "3000:3000"
+    networks:
+      mysql-networks:
+        ipv4_address: 172.15.0.4
+    volumes:
+      - ./homepage/public:/app/public
+networks:
+  mysql-networks:
+    ipam:
+      driver: bridge
+      config:
+        - subnet: 172.15.0.0/16
