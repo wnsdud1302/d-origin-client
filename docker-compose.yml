@@ -2,6 +2,8 @@ services:
   mysql-conatiner:
     image: mysql:8.0.33
     container_name: mysql
+    ports:
+      - 3306:3306
     networks:
       mysql-networks:
         ipv4_address: 172.15.0.2
@@ -14,7 +16,7 @@ services:
     image: dorigin-server:latest
     container_name: my-server
     ports:
-      - "8080:8080"
+      - 8080:8080
     networks:
       mysql-networks:
         ipv4_address: 172.15.0.3
@@ -22,7 +24,7 @@ services:
     image: dorigin-frontend:latest
     container_name: my-client
     ports:
-      - "3000:3000"
+      - 3000:3000
     networks:
       mysql-networks:
         ipv4_address: 172.15.0.4
