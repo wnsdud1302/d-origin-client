@@ -23,7 +23,7 @@ export async function POST(req: NextRequest){
         const accesstoken = signInJwtAcessToken(witoutPass)
 
         const result = {...witoutPass, ...accesstoken}
-
+        console.log(`result: ${result}`)
         return NextResponse.json(result)
     } else {
         return NextResponse.json(null)
