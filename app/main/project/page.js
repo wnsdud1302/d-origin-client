@@ -20,20 +20,16 @@ export default function Page() {
       <div className=" w-[90dvw] h-[90dvh] mt-[50px] mx-auto items-center">
         <div className='bg-white w-[60px] h-[5px] mx-auto mb-[10px] relative'/>
         <h1 className='text-2xl font-bold text-center'>Project</h1>
-        <div className=''>
-          {data.content !== 0 ?
-            <div>
+        {data ?
+          <div className=''>
               <ProejctList data={data.content}/> 
               <div className="flex justify-center mt-[10px] bottom-0">
                 <button onClick={() => setPageIndex(pageIndex - 1)} disabled={pageIndex === 0 ? true : false }>&#10094; 이전</button>
                 <div className=' w-4'/>
                 <button onClick={() => setPageIndex(pageIndex + 1)} disabled={data && data.last}>다음 &#10095;</button>
               </div>
-            </div>
-           : 
-           <div className='text-center text-2xl my-[30dvh]'>프로젝트가 없습니다.</div>}
-
-        </div>
+            </div> : <div className='text-center text-2xl my-[30dvh]'>프로젝트가 없습니다</div>
+        }
       </div>
     )
   }
@@ -54,9 +50,11 @@ export default function Page() {
   
     return (
       <div className='h-[50dvh]'>
-        <div className='grid grid-cols-3 gap-4 relative '>
-          {grid}
-        </div>
+        {data.length === 0 ? <div className='text-center text-2xl my-[30dvh]'>프로젝트가 없습니다.</div>:
+          <div className='grid grid-cols-3 gap-4 relative '>
+            {grid}
+          </div>
+        }
       </div>
   
     );

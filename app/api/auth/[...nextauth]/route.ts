@@ -12,7 +12,7 @@ const handler = NextAuth({
                 password: {  label: "Password", type: "password", placeholder: "비밀번호"}
             },
             async authorize(credentials, req) {
-                const res = await fetch(`${process.env.NEXTAUTH_URL}/api/sign/login`, {
+                const res = await fetch(`/api/sign/login`, {
                     method: 'POST',
                     body: JSON.stringify(credentials),
                     headers: { "Content-Type": "application/json" }
