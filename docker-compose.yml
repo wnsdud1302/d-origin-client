@@ -32,6 +32,7 @@ services:
       - ./homepage/public:/app/public
 networks:
   mysql-networks:
+    name: mysql-networks
     ipam:
       driver: bridge
       config:
