@@ -12,14 +12,12 @@ const handler = NextAuth({
                 password: {  label: "Password", type: "password", placeholder: "비밀번호"}
             },
             async authorize(credentials, req) {
-                console.log(`credentials: ${credentials}`)
                 const res = await fetch(`${process.env.NEXTAUTH_URL}/api/sign/login`, {
                     method: 'POST',
                     body: JSON.stringify(credentials),
                     headers: { "Content-Type": "application/json" }
                 })
                 const user = await res.json()
-                console.log(`user: ${user}`)
                 if(res.ok && user.accesstoken){
                     return user
                 }

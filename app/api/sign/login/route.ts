@@ -12,7 +12,6 @@ interface user {
 export async function POST(req: NextRequest){
     const body: user = await req.json()
     
-    console.log(`body: ${body}`)
 
     const user = await prisma.user.findFirst({
         where: {
