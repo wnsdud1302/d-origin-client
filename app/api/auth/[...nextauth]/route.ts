@@ -19,6 +19,7 @@ const handler = NextAuth({
                 })
                 const user = await res.json()
                 console.log(`user: ${JSON.stringify(user)}`)
+                console.log(`res.ok: ${res.ok}`)
                 if(res.ok && user.accesstoken){
                     return user
                 }
