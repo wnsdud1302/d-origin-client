@@ -4,18 +4,18 @@ import bcrypt from 'bcrypt'
 import { signInJwtAcessToken } from "../../lib/jwt"
 
 interface user {
-    name: string,
+    username: string,
     email: string,
     password: string
 }
 
 export async function POST(req: NextRequest){
     const body: user = await req.json()
-    
+
 
     const user = await prisma.user.findFirst({
         where: {
-            name: body.name
+            name: body.username
         }
     })
 

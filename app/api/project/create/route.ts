@@ -3,18 +3,13 @@ import { backendServer } from "../../../config";
 import { writeFile, mkdir } from "fs/promises";
 import { getServerSession } from "next-auth";
 import { Buffer } from "buffer";
-import { verifyJwtAccessToken } from "../../lib/jwt";
 
 export async function POST(req: NextRequest) {
 
     const session = await getServerSession()
 
-    const token = session.token
 
-    console.log(`token: ${token}`)
-
-
-    if(!session || !verifyJwtAccessToken(token)){
+    if(!session || session.error){
         return NextResponse.json({data: 'unauthenticated', status: 401})
     }
 

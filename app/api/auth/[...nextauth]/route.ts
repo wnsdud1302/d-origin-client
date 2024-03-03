@@ -8,18 +8,17 @@ const handler = NextAuth({
         CredentialsProvider({
             name: 'Credentials',
             credentials: {
-                username: { label: "Username", type: "text", placeholder: "아이디"},
+                username: { label: "name", type: "text", placeholder: "아이디"},
                 password: {  label: "Password", type: "password", placeholder: "비밀번호"}
             },
             async authorize(credentials, req) {
                 const res = await fetch(`${process.env.NEXTAUTH_URL}/api/sign/login`, {
+                    cache: 'no-store',
                     method: 'POST',
                     body: JSON.stringify(credentials),
                     headers: { "Content-Type": "application/json" }
                 })
                 const user = await res.json()
-                console.log(`user: ${JSON.stringify(user)}`)
-                console.log(`res.ok: ${res.ok}`)
                 if(res.ok && user.accesstoken){
                     return user
                 }
@@ -38,8 +37,6 @@ const handler = NextAuth({
     },
     callbacks: {
         async redirect({url, baseUrl}){
-            console.log(`url: ${url}`)
-            console.log(`baseUrl: ${baseUrl}`)
             return `${baseUrl}/post`
         },
 

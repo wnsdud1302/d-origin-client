@@ -8,7 +8,7 @@ import { getToken } from "next-auth/jwt";
 export async function POST(req: NextRequest) {
     const session = await getServerSession()
 
-    if(!session){
+    if(!session || session.error){
         return NextResponse.json({data: 'unauthenticated', status: 401})
     }
     

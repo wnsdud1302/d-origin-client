@@ -14,7 +14,7 @@ function PostProject(){
 
     const {data: session, status } = useSession()
 
-    if(status === 'unauthenticated'){
+    if(status === 'unauthenticated' || session.error){
         redirect('/api/auth/signin')
     }
 
