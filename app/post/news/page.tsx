@@ -14,7 +14,7 @@ function PostNews(){
 
 
 
-    if(status === 'unauthenticated' || session.error){
+    if(status === 'unauthenticated' || session?.error){
         redirect('/api/auth/signin')
     }
 
