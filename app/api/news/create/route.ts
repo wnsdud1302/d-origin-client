@@ -2,8 +2,6 @@ import { mkdir, writeFile } from "fs/promises";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { backendServer } from "../../../config";
-import next from "next";
-import { getToken } from "next-auth/jwt";
 
 export async function POST(req: NextRequest) {
     const session = await getServerSession()
@@ -23,7 +21,7 @@ export async function POST(req: NextRequest) {
     const buffer = await file.arrayBuffer()
     const image = Buffer.from(buffer)
 
-    await writeFile(`./public/news/${news.title}.jpg`, image)
+    await writeFile(`./public/news/${news.title}.jpeg`, image)
 
     const res = await fetch(`${backendServer}/news/create`, {
         method: 'POST',

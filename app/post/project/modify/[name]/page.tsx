@@ -14,7 +14,7 @@ interface Project{
 
 const fetcher = async (url: string) => fetch(url, {cache: 'no-store'}).then(res => res.json())
 
-export default function page({params}){
+export default function Page({params}){
 
     const {data: session, status} = useSession()
 

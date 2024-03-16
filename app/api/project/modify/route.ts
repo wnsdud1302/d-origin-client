@@ -39,7 +39,7 @@ export async function PUT(req: NextRequest){
 
     if(file){
         const buffer = await file.arrayBuffer()
-        await writeFile(`./public/images/${body.get('name')}/1.jpg`, Buffer.from(buffer))
+        await writeFile(`./public/images/${body.get('name')}/1.jpeg`, Buffer.from(buffer))
     }
 
     const res = await fetch(`${backendServer}/project/modify?name=${query.get('name')}`, {

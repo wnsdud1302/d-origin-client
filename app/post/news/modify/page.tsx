@@ -1,16 +1,13 @@
 'use client'
 import { useSession } from 'next-auth/react';
-import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React, { FormEvent, useState } from 'react';
 import useSWR from 'swr';
 
-
-interface Project{
-    name: string,
-    description: string,
-    area: number,
-    scale: string,
+interface News{
+    id: number,
+    title: string,
+    content: string
 }
 
 const fetcher = async (url: any) => fetch(url).then(res => res.json())
@@ -18,17 +15,16 @@ const fetcher = async (url: any) => fetch(url).then(res => res.json())
 export default function Page(){
     const {data: session, status } = useSession()
 
-
     if(status === 'unauthenticated' || session?.error){
         redirect('/api/auth/signin')
     }
 
-    const [checkedList, setcheckedList] = useState<string[]>([])
+    const [checkedList, setcheckedList] = useState<number[]>([])
 
-    const {data: list, error: listError} = useSWR('/api/project/all', fetcher)
+    const {data: list, error: listError} = useSWR('/api/news/all', fetcher)
 
     const checkHandler = (e: FormEvent<HTMLInputElement>) => {
-        const value = e.currentTarget.value
+        const value = Number(e.currentTarget.value)
         if(checkedList.includes(value)){
             setcheckedList(checkedList.filter(item => item !== value))
         } else {
@@ -36,23 +32,22 @@ export default function Page(){
         }
     }
 
-    return(
+    return (
         <div className='flex items-center justify-center mx-auto'>
             <form onSubmit={ async e => {
                 e.preventDefault()
-                const res = await fetch('/api/project/modify', {
+                const res = await fetch('/api/news/modify', {
                     method: 'DELETE',
                     body: JSON.stringify(checkedList)
                 })
                 console.log(await res.json())
-
             }}>
                 <ol>
-                    {list && list.map((project: Project, index) => {
+                    {list && list.map((news: News, index) => {
                         return (
                             <div key={index} className='text-xl'>
-                            <input className='mr-5 w-5 h-5' type='checkbox' value={project.name} checked={checkedList.includes(project.name)} onChange={checkHandler}/>
-                            <Link href={`modify/${project.name}`}>{project.name}</Link>
+                                <input className='mr-5 w-5 h-5' type='checkbox' value={news.id} checked={checkedList.includes(news.id)} onChange={checkHandler}/>
+                                {news.title}
                             </div>
                         )
                     })}
