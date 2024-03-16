@@ -40,7 +40,7 @@ export default function Page() {
       return (
         <div key={index}>
           <Link className=' overflow-hidden' href={`project/${element.name}`}>
-            <Image className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`./images/${element.name}/1.jpeg`} alt={element.name} width={500} height={300}/>
+            <Image className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`/images/${element.name}/1.jpeg`} alt={element.name} width={500} height={300}/>
             <p className=' text-center mt-2'>{element.name}</p>
           </Link>
         </div>

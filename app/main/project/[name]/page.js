@@ -13,7 +13,7 @@ export default async function page({ params }) {
         <div className='fade-in-up mx-[50px] mt-[50px]'>
             <div className=' bg-white w-[60px] h-[5px] mx-auto mb-10px'></div>
             <h1 className=' text-center text-[70px]'>{project.name}</h1>
-            <Image src={`./images/${project.name}/1.jpeg`} alt={project.name} width={2000} height={300}/>
+            <Image src={`/images/${project.name}/1.jpeg`} alt={project.name} width={2000} height={300}/>
             <div className=' grid grid-cols-2 mt-[20px]'>
                 <DescribeTable project={project}/>
                 <p className='mt-[20px] text-[2dvw]'>{project.description}</p>
@@ -27,7 +27,7 @@ export default async function page({ params }) {
 const DescribeTable = ({project}) => {
     return(
         <div className=" relative">
-        <table className="text-[2vw] text-justify w-[45dvw] font-mono" cellPadding={5} cellSpacing="5" width="20%">
+        <table className="text-[15px] text-justify w-[45dvw] font-mono" cellPadding={5} cellSpacing="5" width="20%">
             <tbody>
             <tr>
                 <td>이름: </td>
