@@ -5,7 +5,7 @@ const fetcher = async (url) => fetch(url).then(res => res.json())
 export default function Page() {
 
   return (
-    <div>
+    <div className="flex items-center justify-center">
       구인 구직이 없습니다.
     </div>
   )
