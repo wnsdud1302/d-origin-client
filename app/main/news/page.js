@@ -31,7 +31,7 @@ export default function Page() {
             <div className=' w-4'/>
             <button onClick={() => setPageIndex(pageIndex + 1)} disabled={data && data.last}>다음 &#10095;</button>
           </div>
-      </div> : <div className='text-center text-2xl my-[30dvh]'>뉴스가 없습니다</div>
+      </div> : <div className='text-center text-2xl my-[30dvh]'></div>
       }
     </div>
   )
@@ -42,8 +42,8 @@ const NewsList = ({ data }) => {
   const grid = data.map((element, index) => {
     return (
       <div key={index}>
-        <Link className=' overflow-hidden' href={`/news/${element.id}`}>
-          <Image className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`/news/${element.title}.jpg`} alt={element.title} width={500} height={300}/>
+        <Link className=' overflow-hidden' href={`news/${element.id}`}>
+          <Image className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`/news/${element.title}.jpeg`} alt={element.title} width={500} height={300}/>
           <p className=' text-center mt-2'>{element.title}</p>
         </Link>
       </div>

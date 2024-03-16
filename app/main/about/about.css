@@ -1,2 +1,17 @@
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css)
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components{
+    .home{
+        @apply flex m-auto items-center justify-center;
+        width: 800px;
+        height: 100vh;
+    }
+    .content{
+        text-align: center;
+        font-size: 15px;
+
+    }
+}

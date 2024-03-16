@@ -16,7 +16,7 @@ export default async function page(){
     return(
         <div className="flex m-auto w-[70dvw] h-[100vh] items-center justify-center text-center text-[30px]">
             <div className="w-[30dvh]">
-                <Link href='/post/project'>프로젝트 만들기</Link>
+                <Link href='/post/project'>프로젝트</Link>
                 
             </div>
             <div className="w-[30dvh]">
