@@ -2,7 +2,12 @@ import { NextRequest, NextResponse } from "next/server"
 import { backendServer } from "../../../config"
 
 export async function GET(req: NextRequest){
-    const res = await fetch(`${backendServer}/news/all`)
-    const data = await res.json()
-    return NextResponse.json(data)
+
+    try{
+        const res = await fetch(`${backendServer}/news/all`)
+        const data = await res.json()
+        return NextResponse.json(data)
+    } catch(error){
+        return NextResponse.json({error: error.message, status: 500})
+    }
 }
