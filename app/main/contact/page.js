@@ -9,12 +9,12 @@ export default function page() {
             <div>
                 <Map />
                 <div className='mt-[20px] flex'>
-                    <div className='mb-[30px]'>
+                    <div className=''>
                         <h1 className='font-bold text-[20px] mb-[10px]'>주소</h1>
                         <p>서울특별시</p>
                         <p>도봉구 도봉로 168길 23 k-STAR 빌딩 4층</p>
                     </div>
-                    <div className='ml-6'>
+                    <div className='ml-[150px]'>
                         <h1 className='font-bold text-[20px] mb-[10px]'>건축설계 사업문의</h1>
                         <a href='mailto:cdk@d-origin.kr'>📧 cdk@d-origin.kr</a>
                         <p>☏ 02-955-5105</p>
