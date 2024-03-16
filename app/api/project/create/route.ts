@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
         file = file as File
         const buffer = await file.arrayBuffer()
         await mkdir(`./public/images/${body.get('name')}`)
-        await writeFile(`./public/images/${body.get('name')}/1.jpg`, Buffer.from(buffer))
+        await writeFile(`./public/images/${body.get('name')}/1.jpeg`, Buffer.from(buffer))
     })
 
     const res = await fetch(`${backendServer}/project/create?category=${params.get('category')}`, {

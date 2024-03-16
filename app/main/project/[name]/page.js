@@ -1,9 +1,6 @@
 import { FrontendServer, backendServer } from '../../../config';
 import Image from 'next/image';
 
-const fetcher = async (url) => fetch(url).then(res => res.json())
-
-
 export default async function page({ params }) {
     const decode = decodeURIComponent(params.name);
 

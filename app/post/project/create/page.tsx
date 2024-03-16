@@ -70,10 +70,11 @@ function PostProject(){
         }
 
     }
-
+    if(sendding){
+        redirect('/main/project')
+    }
     return(
         <div>
-            <h1 className=' ml-[50px] text-7xl'>{!sendding ? '프로젝트 생성' : '보내는중'}</h1>
             <form className="grid grid-cols-1 gap-10 text-xl mt-[40px] mx-auto w-[80dvw]" 
                    onSubmit={handleSubmit}
                    encType='multipart/form-data'

@@ -20,7 +20,7 @@ export default async function page(){
                 
             </div>
             <div className="w-[30dvh]">
-                <Link href='/post/news'>뉴스 만들기</Link>
+                <Link href='/post/news'>뉴스</Link>
             </div>
             <div className="w-[30dvh]">
                 <Link href={`/api/auth/signout`}>Sign Out</Link>
