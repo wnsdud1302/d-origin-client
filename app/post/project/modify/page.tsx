@@ -13,7 +13,7 @@ interface Project{
     scale: string,
 }
 
-const fetcher = async (url: any) => fetch(url, {cache: 'no-store'}).then(res => res.json())
+const fetcher = async (url: any) => fetch(url).then(res => res.json())
 
 export default function Page(){
     const {data: session, status } = useSession()
