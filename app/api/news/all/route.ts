@@ -6,6 +6,7 @@ export async function GET(req: NextRequest) {
         const res = await fetch(`${backendServer}/news/list`, {
             cache: "no-store",
         })
+        console.log(res.status)
         const data = await res.json()
         return NextResponse.json(data)
     } catch (e) {
