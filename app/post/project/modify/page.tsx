@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React, { FormEvent, useState } from 'react';
 import useSWR from 'swr';
-import { backendServer } from '../../../config';
 
 
 interface Project{
