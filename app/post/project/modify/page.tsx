@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React, { FormEvent, useState } from 'react';
 import useSWR from 'swr';
+import { backendServer } from '../../../config';
 
 
 interface Project{
@@ -27,6 +28,8 @@ export default function Page(){
 
     const {data: list, error: listError} = useSWR('/api/project/all', fetcher)
 
+    const {data: all, error: allError} = useSWR(`${backendServer}/project/all`, fetcher)
+
     const checkHandler = (e: FormEvent<HTMLInputElement>) => {
         const value = e.currentTarget.value
         if(checkedList.includes(value)){
@@ -48,7 +51,7 @@ export default function Page(){
 
             }}>
                 <ol>
-                    {list && list.map((project: Project, index) => {
+                    {all && all.map((project: Project, index) => {
                         return (
                             <div key={index} className='text-xl'>
                             <input className='mr-5 w-5 h-5' type='checkbox' value={project.name} checked={checkedList.includes(project.name)} onChange={checkHandler}/>
