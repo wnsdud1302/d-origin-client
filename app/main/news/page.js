@@ -43,7 +43,7 @@ const NewsList = ({ data }) => {
     return (
       <div key={index}>
         <Link className=' overflow-hidden' href={`news/${element.id}`}>
-          <Image className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`/news/${element.title}.jpeg`} alt={element.title} width={500} height={300}/>
+          <Image unoptimized={true} className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`/news/${element.title}.jpeg`} alt={element.title} width={500} height={300}/>
           <p className=' text-center mt-2'>{element.title}</p>
         </Link>
       </div>

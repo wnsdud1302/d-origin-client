@@ -3,9 +3,8 @@ import { backendServer } from "../../../config";
 
 
 export async function GET(req: NextRequest){
-
     try{ 
-        const res = await fetch(`http://172.15.0.3:8080/project/all`, {
+        const res = await fetch(`${backendServer}/project/all`, {
             cache: "no-store",
         })
         const data = await res.json()
