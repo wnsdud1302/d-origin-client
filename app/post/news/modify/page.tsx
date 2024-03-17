@@ -21,7 +21,7 @@ export default function Page(){
 
     const [checkedList, setcheckedList] = useState<number[]>([])
 
-    const {data: list, error: listError} = useSWR('/api/news/all', fetcher)
+    const {data: list, error: listError} = useSWR('/api/news/list', fetcher)
 
     const checkHandler = (e: FormEvent<HTMLInputElement>) => {
         const value = Number(e.currentTarget.value)
