@@ -4,7 +4,7 @@ import { backendServer } from "../../../config";
 
 export async function GET(req: NextRequest){
     try{ 
-        const res = await fetch(`${backendServer}/project/all`, {
+        const res = await fetch(`${backendServer}/project?page=0&size1000`, {
             method: 'GET',
             cache: 'no-store',
         })

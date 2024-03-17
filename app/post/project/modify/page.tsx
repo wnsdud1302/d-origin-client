@@ -50,7 +50,7 @@ export default function Page(){
 
             }}>
                 <ol>
-                    {all && all.map((project: Project, index) => {
+                    {all && all.content.map((project: Project, index) => {
                         return (
                             <div key={index} className='text-xl'>
                             <input className='mr-5 w-5 h-5' type='checkbox' value={project.name} checked={checkedList.includes(project.name)} onChange={checkHandler}/>
