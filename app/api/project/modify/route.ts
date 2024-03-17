@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { backendServer } from "../../../config";
 import { getServerSession } from "next-auth";
-import { writeFile, rmdir, unlink } from "fs/promises";
+import { writeFile, rm, unlink } from "fs/promises";
 
 
 export async function GET(req: NextRequest){
@@ -65,7 +65,7 @@ export async function DELETE(req: NextRequest){
         await fetch(`${backendServer}/project/delete?name=${name}`, {
             method: 'DELETE'
         })
-        await rmdir(`./public/images/${name}`, {recursive: true})
+        await rm(`./public/images/${name}`, {recursive: true})
     })
 
     return NextResponse.json({data: 'success', status: 200})
