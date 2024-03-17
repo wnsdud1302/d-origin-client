@@ -4,9 +4,7 @@ import { backendServer } from "../../../config";
 
 export async function GET(req: NextRequest){
     try{ 
-        const res = await fetch(`${backendServer}/project/all`, {
-            cache: "no-store",
-        })
+        const res = await fetch(`${backendServer}/project/all`)
         const data = await res.json()
         return NextResponse.json(data)
     } catch(error){
