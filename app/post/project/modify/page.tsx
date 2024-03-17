@@ -26,11 +26,8 @@ export default function Page(){
 
     const [checkedList, setcheckedList] = useState<string[]>([])
 
-    const {data: list, error: listError} = useSWR('/api/project/all', fetcher)
+    const {data: all, error: allError} = useSWR(`/api/project/all`, fetcher)
 
-    const {data: all, error: allError} = useSWR(`${backendServer}/project/all`, fetcher)
-
-    const {data: test, error: testError} = useSWR(`/api/project?page=0`, fetcher)
 
     const checkHandler = (e: FormEvent<HTMLInputElement>) => {
         const value = e.currentTarget.value
