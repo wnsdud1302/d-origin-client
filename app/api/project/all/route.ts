@@ -4,6 +4,7 @@ import { backendServer } from "../../../config";
 
 export async function GET(req: NextRequest){
     try{ 
+        console.log(backendServer)
         const res = await fetch(`${backendServer}/project/all`)
         const data = await res.json()
         return NextResponse.json(data)
