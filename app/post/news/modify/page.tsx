@@ -1,6 +1,7 @@
 'use client'
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 import React, { FormEvent, useState } from 'react';
 import useSWR from 'swr';
 
@@ -47,7 +48,7 @@ export default function Page(){
                         return (
                             <div key={index} className='text-xl'>
                                 <input className='mr-5 w-5 h-5' type='checkbox' value={news.id} checked={checkedList.includes(news.id)} onChange={checkHandler}/>
-                                {news.title}
+                                <Link href={`modify/${news.id}`}>{news.title}</Link>
                             </div>
                         )
                     })}
