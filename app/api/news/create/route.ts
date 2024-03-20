@@ -18,10 +18,13 @@ export async function POST(req: NextRequest) {
     }
 
     const file = body.get('image') as File
-    const buffer = await file.arrayBuffer()
-    const image = Buffer.from(buffer)
+    if(file){
 
-    await writeFile(`./public/news/${news.title}.jpeg`, image)
+        const buffer = await file.arrayBuffer()
+        const image = Buffer.from(buffer)
+
+        await writeFile(`./public/news/${news.title}.jpeg`, image)
+    }
 
     const res = await fetch(`${backendServer}/news/create`, {
         method: 'POST',
