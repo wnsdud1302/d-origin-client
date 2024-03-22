@@ -46,6 +46,7 @@ export default function Page(){
                     body: JSON.stringify(checkedList)
                 })
                 console.log(await res.json())
+                redirect('/project/modify')
 
             }}>
                 <ol>
