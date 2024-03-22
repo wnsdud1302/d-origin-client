@@ -69,7 +69,7 @@ export async function PUT(req: NextRequest){
         await writeFile(`./public/images/${body.get('name')}/1.jpeg`, Buffer.from(buffer))
     }
 
-    fetcher(`${backendServer}/project/modify?name=${query.get('name')}`, project)
+    return fetcher(`${backendServer}/project/modify?name=${query.get('name')}`, project)
 }
 
 export async function DELETE(req: NextRequest){

@@ -2,8 +2,9 @@ import { backendServer } from "../../../config";
 import Image from 'next/image'
 
 export default async function page({params}) {
+    const decode = decodeURIComponent(params.title)
 
-    const res = await fetch(`${backendServer}/news/id/${params.id}` , {
+    const res = await fetch(`${backendServer}/news/${decode}` , {
         cache: "no-store",
     })
     const news = await res.json()

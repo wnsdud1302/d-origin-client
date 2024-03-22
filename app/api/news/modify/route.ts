@@ -1,12 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 import { backendServer } from "../../../config";
 import { getServerSession } from "next-auth";
-import { writeFile } from "fs/promises";
-import { rm } from "fs/promises";
+import { writeFile, rm, rename } from "fs/promises";
+
+const fetcher = async (url: string, news: any) => {
+    const res = await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(news)
+
+    })
+    const data = await res.json()
+    return NextResponse.json({data, status: 200})
+}
 
 export async function GET(req: NextRequest){
-    const id = req.nextUrl.searchParams.get("id");
-    const res = await fetch(`${backendServer}/news/${id}`)
+    const title = req.nextUrl.searchParams.get("title");
+    const res = await fetch(`${backendServer}/news/${title}`)
     const data = await res.json()
     return NextResponse.json(data)
 }
@@ -19,7 +31,7 @@ export async function PUT(req: NextRequest){
         return NextResponse.json({data: 'unauthenticated', status: 401})
     }
 
-    const id = req.nextUrl.searchParams.get("id");
+    const title = req.nextUrl.searchParams.get("title");
     const body = await req.formData()
 
     const news = {
@@ -28,20 +40,24 @@ export async function PUT(req: NextRequest){
     }
 
     const file = body.get('image') as File
+
+    if(body.get('title') !== title && file){
+        const buffer = await file.arrayBuffer()
+        await writeFile(`./public/news/${body.get('title')}.jpeg`, Buffer.from(buffer))
+        return fetcher(`${backendServer}/news/modify?title=${title}`, news)
+    }
+
+    if(body.get('title') !== title && !file){
+        await rename(`./public/news/${title}.jpeg`, `./public/news/${body.get('title')}.jpeg`)
+        return fetcher(`${backendServer}/news/modify?title=${title}`, news)
+    }
+
     if(file){
         const buffer = await file.arrayBuffer()
         await writeFile(`./public/news/${news.title}.jpeg`, Buffer.from(buffer))
     }
 
-    const res = await fetch(`${backendServer}/news/modify?id=${id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(body)
-    })
-    const data = await res.json()
-    return NextResponse.json(data)
+    return fetcher(`${backendServer}/news/modify?title=${title}`, news)
 }
 
 export async function DELETE(req: NextRequest){
@@ -53,13 +69,12 @@ export async function DELETE(req: NextRequest){
 
     const body = await req.json()
 
-    body.forEach(async (id: number) => {
+    body.forEach(async (title: string) => {
         try{
-            const res = await fetch(`${backendServer}/news/modify?id=${id}`, {
+            const res = await fetch(`${backendServer}/news/delete?title=${title}`, {
                 method: "DELETE"
             })
-            const data = await res.text()
-            await rm(`./public/news/${data}.jpeg`)
+            await rm(`./public/news/${title}.jpeg`)
         } catch(e){
             return NextResponse.json({error: e.message, status: 500})
         }

@@ -42,7 +42,7 @@ const NewsList = ({ data }) => {
   const grid = data.map((element, index) => {
     return (
       <div key={index}>
-        <Link className=' overflow-hidden' href={`news/${element.id}`}>
+        <Link className=' overflow-hidden' href={`news/${element.title}`}>
           <Image unoptimized={true} className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`/news/${element.title}.jpeg`} alt={element.title} width={500} height={300}/>
           <p className=' text-center mt-2'>{element.title}</p>
         </Link>
