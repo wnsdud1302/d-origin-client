@@ -37,10 +37,11 @@ export default function Page() {
   const ProejctList = ({ data }) => {
     
     const grid = data.map((element, index) => {
+      const name = encodeURIComponent(element.name)
       return (
         <div key={index}>
-          <Link className=' overflow-hidden' href={`project/${element.name}`}>
-            <Image unoptimized={true} className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`/images/${element.name}/1.jpeg`} alt={element.name} width={500} height={300}/>
+          <Link className=' overflow-hidden' href={`project/${name}`}>
+            <Image unoptimized className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`/images/${name}/1.jpeg`} alt={element.name} width={500} height={300}/>
             <p className=' text-center mt-2'>{element.name}</p>
           </Link>
         </div>
