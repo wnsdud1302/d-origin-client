@@ -10,6 +10,10 @@ import Image from 'next/image'
 
 const fetcher = async (url) => fetch(url).then(res => res.json())
 
+const imageLoader = ({ src, width, quality }) => {
+  return `${FrontendServer}/api/image?src=${src}&width=${width}&quality=${quality || 75}`
+}
+
 export default function Page() {
 
     const [pageIndex, setPageIndex] = useState(0);
@@ -41,7 +45,7 @@ export default function Page() {
       return (
         <div key={index}>
           <Link className=' overflow-hidden' href={`project/${name}`}>
-            <Image unoptimized className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`/images/${name}/1.jpeg`} alt={element.name} width={500} height={300}/>
+            <Image className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`/images/${name}/1.jpeg`} alt={element.name} width={500} height={300}/>
             <p className=' text-center mt-2'>{element.name}</p>
           </Link>
         </div>
