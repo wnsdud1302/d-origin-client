@@ -1,8 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { backendServer } from "../../../config";
 import { getServerSession } from "next-auth";
-import { writeFile, rm, unlink, mkdir } from "fs/promises";
+import { writeFile, rm, unlink, mkdir, rename } from "fs/promises";
 
+
+const fetcher = async (url: string, project: any) => {
+    const res = await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(project)
+
+    })
+    const data = await res.json()
+    return NextResponse.json({data, status: 200})
+}
 
 export async function GET(req: NextRequest){
     try{
@@ -41,6 +54,13 @@ export async function PUT(req: NextRequest){
         await mkdir(`./public/images/${body.get('name')}`)
         await rm(`./public/images/${query.get('name')}`, {recursive: true})
         await writeFile(`./public/images/${body.get('name')}/1.jpeg`, Buffer.from(await file.arrayBuffer()))
+        return fetcher(`${backendServer}/project/modify?name=${query.get('name')}`, project)
+    }
+
+    if(body.get('name') !== query.get('name') && !file){
+        await rename(`./public/images/${query.get('name')}`, `./public/images/${body.get('name')}`)
+        return fetcher(`${backendServer}/project/modify?name=${query.get('name')}`, project)
+        
     }
 
     if(file){
@@ -49,15 +69,7 @@ export async function PUT(req: NextRequest){
         await writeFile(`./public/images/${body.get('name')}/1.jpeg`, Buffer.from(buffer))
     }
 
-    const res = await fetch(`${backendServer}/project/modify?name=${query.get('name')}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(project)
-    })
-    const data = await res.json()
-    return NextResponse.json({data, status: 200})
+    fetcher(`${backendServer}/project/modify?name=${query.get('name')}`, project)
 }
 
 export async function DELETE(req: NextRequest){
