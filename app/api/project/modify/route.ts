@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { backendServer } from "../../../config";
 import { getServerSession } from "next-auth";
-import { writeFile, rm, unlink } from "fs/promises";
+import { writeFile, rm, unlink, mkdir } from "fs/promises";
 
 
 export async function GET(req: NextRequest){
@@ -37,8 +37,15 @@ export async function PUT(req: NextRequest){
 
     const file = body.get('image') as File
 
+    if(body.get('name') !== query.get('name') && file){
+        await mkdir(`./public/images/${body.get('name')}`)
+        await rm(`./public/images/${query.get('name')}`, {recursive: true})
+        await writeFile(`./public/images/${body.get('name')}/1.jpeg`, Buffer.from(await file.arrayBuffer()))
+    }
+
     if(file){
         const buffer = await file.arrayBuffer()
+        await mkdir(`./public/images/${body.get('name')}`)
         await writeFile(`./public/images/${body.get('name')}/1.jpeg`, Buffer.from(buffer))
     }
 
