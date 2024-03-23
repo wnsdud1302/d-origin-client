@@ -6,6 +6,7 @@ export default async function Page({params}){
     return(
         <div>
             <Image src={`${frontendServer}/api/project/image?name=${name}`} alt={name} width={2000} height={300}/>
+            <img src={`${frontendServer}/api/project/image?name=${name}`} alt={name}/>
         </div>
     )
 }

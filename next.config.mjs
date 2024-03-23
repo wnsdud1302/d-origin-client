@@ -10,7 +10,12 @@ const nextConfig = {
             {
                 protocol: 'http',
                 hostname: 'localhost',
-            }
+            },
+            {
+                protocol: 'http',
+                hostname: 'd-origin.kr',
+            },
+        
         ],
     },
     output: 'standalone'
