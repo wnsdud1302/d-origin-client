@@ -1,8 +1,7 @@
-import { NextRequest } from 'next/server'
-import { frontendServer } from '../../config'
+import { frontendServer } from '../../../config'
 
-export default async function Page(req: NextRequest){
-    const name = req.nextUrl.searchParams.get('name')
+export default async function Page({params}){
+    const name = decodeURIComponent(params.name)
     const res = await fetch(`${frontendServer}/api/project/image?name=${name}`)
 
     return(
