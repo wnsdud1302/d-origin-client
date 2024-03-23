@@ -5,7 +5,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'http',
-                hostname: 'd-origin.kr',
+                hostname: 'www.d-origin.kr',
             },
             {
                 protocol: 'http',
