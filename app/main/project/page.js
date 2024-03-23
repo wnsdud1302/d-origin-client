@@ -6,6 +6,7 @@ import useSWR from 'swr'
 import useSWRInfinite from 'swr/infinite'
 import './project.css'
 import Image from 'next/image'
+import { frontendServer } from '../../config'
 
 
 const fetcher = async (url) => fetch(url).then(res => res.json())
@@ -21,7 +22,7 @@ export default function Page() {
     const {data, error} = useSWR(`/api/project?page=${pageIndex}`, fetcher)
   
     return (
-      <div className=" w-[90dvw] h-[90dvh] mt-[50px] mx-auto items-center">
+      <div className=" w-[90dvw] mt-[50px] mx-auto items-center">
         <div className='bg-white w-[60px] h-[5px] mx-auto mb-[10px] relative'/>
         <h1 className='text-2xl font-bold text-center'>Project</h1>
         {data ?
@@ -41,12 +42,14 @@ export default function Page() {
   const ProejctList = ({ data }) => {
     
     const grid = data.map((element, index) => {
-      const name = encodeURIComponent(element.name)
+      const name = decodeURIComponent(element.name)
+      console.log(name)
       return (
         <div key={index}>
-          <Link className=' overflow-hidden' href={`project/${name}`}>
-            <Image unoptimized className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`/images/${name}/1.jpeg`} alt={element.name} width={500} height={300}/>
-            <p className=' text-center mt-2'>{element.name}</p>
+          <Link className='' href={`project/${name}`}>
+            <Image unoptimized className='flex items-center justify-center object-cover h-[200px] w-[80%] mx-auto' 
+             src={`${frontendServer}/api/project/image?name=${name}`} alt={element.name} width={1000} height={300}/>
+            <p className='text-center mt-2'>{element.name}</p>
           </Link>
         </div>
       );
@@ -54,9 +57,9 @@ export default function Page() {
   
   
     return (
-      <div className='h-[50dvh]'>
+      <div className='w-[90vw]'>
         {data.length === 0 ? <div className='text-center text-2xl my-[30dvh]'>프로젝트가 없습니다.</div>:
-          <div className='grid grid-cols-3 gap-4 relative '>
+          <div className='grid grid-cols-3 gap-3 relative '>
             {grid}
           </div>
         }
