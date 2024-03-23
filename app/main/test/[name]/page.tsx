@@ -1,12 +1,12 @@
 import { frontendServer } from '../../../config'
+import  Image  from 'next/image'
 
 export default async function Page({params}){
     const name = decodeURIComponent(params.name)
-    const res = await fetch(`${frontendServer}/api/project/image?name=${name}`)
 
     return(
         <div>
-            <img src={`${frontendServer}/api/project/image?name=${name}`} />
+            <Image src={`${frontendServer}/project/image?name=${name}`} alt={name} width={2000} height={300}/>
         </div>
     )
 }
