@@ -36,7 +36,7 @@ RUN mkdir .next && mkdir public/images && mkdir public/news
 RUN chown nextjs:nodejs .next
 RUN chown nextjs:nodejs -R ./public
 
-COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/next.config.mjs ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
