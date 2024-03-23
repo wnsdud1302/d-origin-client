@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    // images: {
-    //     unoptimized: true
-    // },
+    images: {
+        domains: [
+            'localhost',
+            'd-origin.kr',
+        ],
+    },
     output: 'standalone'
 
 };
