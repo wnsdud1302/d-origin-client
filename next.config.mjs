@@ -2,9 +2,15 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: [
-            'localhost',
-            'd-origin.kr',
+        remotePatterns: [
+            {
+                protocol: 'http',
+                hostname: 'd-origin.kr',
+            },
+            {
+                protocol: 'http',
+                hostname: 'localhost',
+            }
         ],
     },
     output: 'standalone'
