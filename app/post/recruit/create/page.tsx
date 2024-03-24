@@ -71,25 +71,25 @@ export default function Page(){
                    encType="multipart/form-data">
                     <div>
                         <p>제목</p>
-                        <input className="w-full h-10 border border-black" type="text" 
+                        <input className="input w-full h-10 border border-black" type="text" 
                                value={recruit.title} 
                                onChange={e => setRecruit({...recruit, title: e.target.value})}/>
                     </div>
                     <div>
                         <p>모집 유형</p>
-                        <input className="w-full h-10 border border-black" type="text" 
+                        <input className="input w-full h-10 border border-black" type="text" 
                                value={recruit.recruitType} 
                                onChange={e => setRecruit({...recruit, recruitType: e.target.value})}/>
                     </div>
                     <div>
                         <p>모집 상태</p>
-                        <input className="w-full h-10 border border-black" type="text" 
+                        <input className="input w-full h-10 border border-black" type="text" 
                                value={recruit.recruitStatus} 
                                onChange={e => setRecruit({...recruit, recruitStatus: e.target.value})}/>
                     </div>
                     <div>
                         <p>모집 마감일</p>
-                        <input className="w-full h-10 border border-black" type="text" 
+                        <input className="input w-full h-10 border border-black" type="text" 
                                value={recruit.recruitendDate} 
                                onChange={e => setRecruit({...recruit, recruitendDate: e.target.value})}/>
                     </div>

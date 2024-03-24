@@ -80,19 +80,19 @@ export default function Page({params}){
                   encType="multipart/form-data">
                 <div>
                     <label>제목</label>
-                    <input type="text" value={recruit.title} onChange={e => setRecruit({...recruit, title: e.currentTarget.value})}/>
+                    <input className="input" type="text" value={recruit.title} onChange={e => setRecruit({...recruit, title: e.currentTarget.value})}/>
                 </div>
                 <div>
                     <label>모집 유형</label>
-                    <input type="text" value={recruit.recruitType} onChange={e => setRecruit({...recruit, recruitType: e.currentTarget.value})}/>
+                    <input className="input" type="text" value={recruit.recruitType} onChange={e => setRecruit({...recruit, recruitType: e.currentTarget.value})}/>
                 </div>
                 <div>
                     <label>모집 상태</label>
-                    <input type="text" value={recruit.recruitStatus} onChange={e => setRecruit({...recruit, recruitStatus: e.currentTarget.value})}/>
+                    <input className="input" type="text" value={recruit.recruitStatus} onChange={e => setRecruit({...recruit, recruitStatus: e.currentTarget.value})}/>
                 </div>
                 <div>
                     <label>마감일</label>
-                    <input type="date" value={recruit.recruitendDate} onChange={e => setRecruit({...recruit, recruitendDate: e.currentTarget.value})}/>
+                    <input className="input" type="date" value={recruit.recruitendDate} onChange={e => setRecruit({...recruit, recruitendDate: e.currentTarget.value})}/>
                 </div>
                 <div>
                     <label>이미지</label>
