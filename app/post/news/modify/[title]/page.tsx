@@ -21,7 +21,7 @@ export default function Page({params}){
 
     const title = params.title
 
-    const {data, error} = useSWR(`/api/news/modify?id=${title}`, fetcher)
+    const {data, error} = useSWR(`/api/news/modify?title=${title}`, fetcher)
 
     const [news, setNews] = useState<News>({
         title: '',
