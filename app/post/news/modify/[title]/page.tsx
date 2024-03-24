@@ -74,11 +74,11 @@ export default function Page({params}){
             <form className="grid grid-cols-1 gap-10 text-xl mt-10 mx-auto w-[80vw]" onSubmit={handleSubmit}>
                 <div>
                     <label>제목</label>
-                    <input type='text' value={news.title} onChange={e => setNews({...news, title: e.target.value})}/>
+                    <input className="input" type='text' value={news.title} onChange={e => setNews({...news, title: e.target.value})}/>
                 </div>
                 <div>
                     <label>내용</label>
-                    <textarea value={news.content} onChange={e => setNews({...news, content: e.target.value})}/>
+                    <textarea className="text-area" value={news.content} onChange={e => setNews({...news, content: e.target.value})}/>
                 </div>
                 <div>
                     <input type='file' onChange={e => {
