@@ -50,7 +50,7 @@ export default function Page({params}){
         setSendding(true)
 
         try{
-            const response = await fetch(`/api/news/modify?id=${title}`, {
+            const response = await fetch(`/api/news/modify?title=${title}`, {
                 method: 'PUT',
                 body: formData
             })
