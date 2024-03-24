@@ -32,7 +32,7 @@ RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
 
-RUN mkdir .next && mkdir public/images
+RUN mkdir .next && mkdir public/images && mkdir public/images/news && mkdir public/images/project && mkdir public/images/recruit
 RUN chown nextjs:nodejs .next
 RUN chown nextjs:nodejs -R ./public
 
