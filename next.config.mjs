@@ -11,7 +11,8 @@ const nextConfig = {
             {
                 protocol: 'http',
                 hostname: 'd-origin.kr',
-                port: "80",
+                port: '',
+                pathname: '/**'
             },
         
         ],
