@@ -13,7 +13,7 @@ services:
       - ../mysql:/var/lib/mysql
       - /tmp:/tmp
   my-server:
-    image: dorigin-server:latest
+    image: server:latest
     container_name: my-server
     ports:
       - 8080:8080
@@ -21,7 +21,7 @@ services:
       mysql-networks:
         ipv4_address: 172.15.0.3
   my-client:
-    image: dorigin-frontend:latest
+    image: client:latest
     container_name: my-client
     ports:
       - 3000:3000

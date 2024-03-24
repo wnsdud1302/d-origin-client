@@ -114,7 +114,7 @@ function PostProject(){
                 <div>
                     <input className='' type='file' 
                     multiple={true}
-                    accept='image/jpg' 
+                    accept='image/jpeg' 
                     onChange={e=>{
                         const file = e.target.files
                         makeImageUrls(file)
@@ -126,7 +126,7 @@ function PostProject(){
                         })}
                     </div>
                 </div>
-                <button type='submit'>Submit</button>
+                <button type='submit'>등록</button>
             </form>
         </div>
     )

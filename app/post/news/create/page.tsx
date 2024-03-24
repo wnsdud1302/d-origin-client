@@ -76,7 +76,7 @@ function PostNews(){
                         }}/>
                     </div>
                     <div>
-                        <button type="submit">submit</button>
+                        <button type="submit">등록</button>
                     </div>
                 </form>
             </div>

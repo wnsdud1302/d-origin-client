@@ -11,9 +11,6 @@ import { frontendServer } from '../../config'
 
 const fetcher = async (url) => fetch(url).then(res => res.json())
 
-const imageLoader = ({ src, width, quality }) => {
-  return `${FrontendServer}/api/image?src=${src}&width=${width}&quality=${quality || 75}`
-}
 
 export default function Page() {
 

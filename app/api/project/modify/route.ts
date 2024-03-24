@@ -51,22 +51,21 @@ export async function PUT(req: NextRequest){
     const file = body.get('image') as File
 
     if(body.get('name') !== query.get('name') && file){
-        await mkdir(`./public/images/${body.get('name')}`)
-        await rm(`./public/images/${query.get('name')}`, {recursive: true})
-        await writeFile(`./public/images/${body.get('name')}/1.jpeg`, Buffer.from(await file.arrayBuffer()))
+        await rename(`./public/images/project/${query.get('name')}`, `./public/images/project/${body.get('name')}`)
+        await writeFile(`./public/images/project/${body.get('name')}/1.jpeg`, Buffer.from(await file.arrayBuffer()))
         return fetcher(`${backendServer}/project/modify?name=${query.get('name')}`, project)
     }
 
     if(body.get('name') !== query.get('name') && !file){
-        await rename(`./public/images/${query.get('name')}`, `./public/images/${body.get('name')}`)
+        await rename(`./public/images/project/${query.get('name')}`, `./public/images/project/${body.get('name')}`)
         return fetcher(`${backendServer}/project/modify?name=${query.get('name')}`, project)
         
     }
 
     if(file){
         const buffer = await file.arrayBuffer()
-        await rename(`./public/images/${query.get('name')}`, `./public/images/${body.get('name')}`)
-        await writeFile(`./public/images/${body.get('name')}/1.jpeg`, Buffer.from(buffer))
+        await rename(`./public/images/proejct/${query.get('name')}`, `./public/images/project/${body.get('name')}`)
+        await writeFile(`./public/images/project/${body.get('name')}/1.jpeg`, Buffer.from(buffer))
     }
 
     return fetcher(`${backendServer}/project/modify?name=${query.get('name')}`, project)
@@ -84,7 +83,7 @@ export async function DELETE(req: NextRequest){
         await fetch(`${backendServer}/project/delete?name=${name}`, {
             method: 'DELETE'
         })
-        await rm(`./public/images/${name}`, {recursive: true})
+        await rm(`./public/images/project/${name}`, {recursive: true})
     })
 
     return NextResponse.json({data: 'success', status: 200})

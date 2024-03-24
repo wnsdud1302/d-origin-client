@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
         const buffer = await file.arrayBuffer()
         const image = Buffer.from(buffer)
 
-        await writeFile(`./public/news/${news.title}.jpeg`, image)
+        await writeFile(`./public/images/news/${news.title}.jpeg`, image)
     }
 
     const res = await fetch(`${backendServer}/news/create`, {

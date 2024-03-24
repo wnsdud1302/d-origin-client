@@ -5,7 +5,6 @@ import { FormEvent, useState } from "react";
 import useSWR from "swr";
 
 interface News{
-    id: number,
     title: string,
     content: string
 }
@@ -20,12 +19,11 @@ export default function Page({params}){
         redirect('/api/auth/signin')
     }
 
-    const id = params.id
+    const title = params.title
 
-    const {data, error} = useSWR(`/api/news/modify?id=${id}`, fetcher)
+    const {data, error} = useSWR(`/api/news/modify?id=${title}`, fetcher)
 
     const [news, setNews] = useState<News>({
-        id: 0,
         title: '',
         content: ''
     })
@@ -52,7 +50,7 @@ export default function Page({params}){
         setSendding(true)
 
         try{
-            const response = await fetch(`/api/news/modify?id=${id}`, {
+            const response = await fetch(`/api/news/modify?id=${title}`, {
                 method: 'PUT',
                 body: formData
             })
@@ -88,7 +86,7 @@ export default function Page({params}){
                         setImage(file)
                         makeImageURL(file)
                     }}/>
-                    {imageurl && <img src={imageurl ? imageurl : `/images/news/${news.title}.jpeg`}/>}
+                    {imageurl && <img src={imageurl ? imageurl : `/iamges/news/${news.title}.jpeg`}/>}
                 </div>
                 <button type='submit'>수정</button>
             </form>

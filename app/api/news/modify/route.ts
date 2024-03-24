@@ -41,20 +41,14 @@ export async function PUT(req: NextRequest){
 
     const file = body.get('image') as File
 
-    if(body.get('title') !== title && file){
-        const buffer = await file.arrayBuffer()
-        await rename(`./public/news/${body.get('title')}.jpeg`, Buffer.from(buffer))
-        return fetcher(`${backendServer}/news/modify?title=${title}`, news)
-    }
-
     if(body.get('title') !== title && !file){
-        await rename(`./public/news/${title}.jpeg`, `./public/news/${body.get('title')}.jpeg`)
+        await rename(`./public/images/news/${title}.jpeg`, `./public/images/news/${body.get('title')}.jpeg`)
         return fetcher(`${backendServer}/news/modify?title=${title}`, news)
     }
 
     if(file){
         const buffer = await file.arrayBuffer()
-        await rename(`./public/news/${news.title}.jpeg`, Buffer.from(buffer))
+        await writeFile(`./public/images/news/${news.title}.jpeg`, Buffer.from(buffer))
     }
 
     return fetcher(`${backendServer}/news/modify?title=${title}`, news)
@@ -74,7 +68,7 @@ export async function DELETE(req: NextRequest){
             const res = await fetch(`${backendServer}/news/delete?title=${title}`, {
                 method: "DELETE"
             })
-            await rm(`./public/news/${title}.jpeg`)
+            await rm(`./public/images/news/${title}.jpeg`)
         } catch(e){
             return NextResponse.json({error: e.message, status: 500})
         }

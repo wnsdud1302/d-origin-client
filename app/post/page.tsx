@@ -22,6 +22,11 @@ export default async function page(){
             <div className="w-[30dvh]">
                 <Link href='/post/news'>뉴스</Link>
             </div>
+            
+            <div className="w-[30vh]">
+                <Link href='/post/recruit'>구인</Link>
+            </div>
+            
             <div className="w-[30dvh]">
                 <Link href={`/api/auth/signout`}>Sign Out</Link>
             </div>

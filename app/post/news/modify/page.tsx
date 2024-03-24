@@ -44,11 +44,11 @@ export default function Page(){
                 console.log(await res.json())
             }}>
                 <ol>
-                    {list && list.map((news: News, index) => {
+                    {list && list.map((news: News, index: any) => {
                         return (
                             <div key={index} className='text-xl'>
                                 <input className='mr-5 w-5 h-5' type='checkbox' value={news.id} checked={checkedList.includes(news.id)} onChange={checkHandler}/>
-                                <Link href={`modify/${news.id}`}>{news.title}</Link>
+                                <Link href={`modify/${news.title}`}>{news.title}</Link>
                             </div>
                         )
                     })}
