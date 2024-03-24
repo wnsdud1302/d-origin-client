@@ -5,15 +5,12 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'http',
-                hostname: 'www.d-origin.kr',
-            },
-            {
-                protocol: 'http',
                 hostname: 'localhost',
             },
             {
                 protocol: 'http',
                 hostname: 'd-origin.kr',
+                port: 80,
             },
         
         ],
