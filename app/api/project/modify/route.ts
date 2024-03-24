@@ -65,7 +65,7 @@ export async function PUT(req: NextRequest){
 
     if(file){
         const buffer = await file.arrayBuffer()
-        await mkdir(`./public/images/${body.get('name')}`)
+        await rename(`./public/images/${query.get('name')}`, `./public/images/${body.get('name')}`)
         await writeFile(`./public/images/${body.get('name')}/1.jpeg`, Buffer.from(buffer))
     }
 

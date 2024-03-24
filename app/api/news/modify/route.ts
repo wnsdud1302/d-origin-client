@@ -43,7 +43,7 @@ export async function PUT(req: NextRequest){
 
     if(body.get('title') !== title && file){
         const buffer = await file.arrayBuffer()
-        await writeFile(`./public/news/${body.get('title')}.jpeg`, Buffer.from(buffer))
+        await rename(`./public/news/${body.get('title')}.jpeg`, Buffer.from(buffer))
         return fetcher(`${backendServer}/news/modify?title=${title}`, news)
     }
 
@@ -54,7 +54,7 @@ export async function PUT(req: NextRequest){
 
     if(file){
         const buffer = await file.arrayBuffer()
-        await writeFile(`./public/news/${news.title}.jpeg`, Buffer.from(buffer))
+        await rename(`./public/news/${news.title}.jpeg`, Buffer.from(buffer))
     }
 
     return fetcher(`${backendServer}/news/modify?title=${title}`, news)
