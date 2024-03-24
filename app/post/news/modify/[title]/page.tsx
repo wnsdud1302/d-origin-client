@@ -70,8 +70,8 @@ export default function Page({params}){
     }
 
     return (
-        <div className='flex items-center justify-center mx-auto'>
-            <form onSubmit={handleSubmit}>
+        <div>
+            <form className="grid grid-cols-1 gap-10 text-xl mt-10 mx-auto w-[80vw]" onSubmit={handleSubmit}>
                 <div>
                     <label>제목</label>
                     <input type='text' value={news.title} onChange={e => setNews({...news, title: e.target.value})}/>
