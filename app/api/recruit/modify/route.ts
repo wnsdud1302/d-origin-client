@@ -42,20 +42,7 @@ export async function PUT(req: any){
 
     const recruit = {
         title: body.get('title'),
-        endDate: body.get('endDate'),
         content: body.get('content')
-    }
-
-    const file = body.get('image') as File
-
-    if(body.get('title') !== query.get('title') && !file){
-        await rename(`./public/images/recruit/${query.get('title')}.jpeg`, `./public/images/recruit/${body.get('title')}.jpeg`)
-        return fetcher(`${backendServer}/recruit/modify?title=${query.get('title')}`, recruit)
-    }
-
-    if(file){
-        const buffer = await file.arrayBuffer()
-        await writeFile(`./public/images/recruit/${recruit.title}.jpeg`, Buffer.from(buffer))
     }
 
     return fetcher(`${backendServer}/recruit/modify?title=${query.get('title')}`, recruit)
@@ -76,7 +63,6 @@ export async function DELETE(req: any){
             const res = await fetch(`${backendServer}/recruit/delete?title=${title}`, {
                 method: "DELETE"
             })
-            await rm(`./public/images/recruit/${title}.jpeg`)
         } catch(e){
             return NextResponse.json({error: e.message, status: 500})
         }

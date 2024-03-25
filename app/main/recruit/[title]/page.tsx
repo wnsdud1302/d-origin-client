@@ -23,8 +23,8 @@ export default async function Page({params}){
             <Link className="ml-10" href="/main/recruit">뒤로가기</Link>
             <div className=" flex mx-auto items-center justify-center mt-16">
                 <div>
-                    <h1 className="text-[30px] text-center">{data.title}</h1>
-                    <h2>{data.endDate}</h2>
+                    <h1 className="text-[30px] text-center font-bold">{data.title}</h1>
+                    <h2>마감일: &nbsp;~{data.endDate.replaceAll('-','.')}</h2>
                     <p>{content}</p>
                 </div>
             </div>

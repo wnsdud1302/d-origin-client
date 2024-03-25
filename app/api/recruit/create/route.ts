@@ -18,16 +18,7 @@ export async function POST(req: NextRequest){
 
         const recruit = {
             title: body.get('title'),
-            endDate: body.get('endDate'),
             content: body.get('content')
-        }
-
-        const file = body.get('image') as File
-
-        if(file){
-            const buffer = await file.arrayBuffer()
-            const image = Buffer.from(buffer)
-            await writeFile(`./public/images/recruit/${recruit.title}.jpeg`, image)
         }
 
         const res = await fetch(`${backendServer}/recruit/create`, {

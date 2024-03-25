@@ -8,7 +8,6 @@ import useSWR from "swr";
 
 interface Recruit{
     title: string;
-    endDate: string;
     content: string;
 }
 
@@ -26,7 +25,6 @@ export default function Page({params}){
     const {data, error} = useSWR(`/api/recruit/modify?title=${title}`, fetcher)
     const [recruit, setRecruit] = useState<Recruit>({
         title: '',
-        endDate: '',
         content: ''
     })
 
@@ -81,23 +79,8 @@ export default function Page({params}){
                     <input className="input" type="text" value={recruit.title} onChange={e => setRecruit({...recruit, title: e.currentTarget.value})}/>
                 </div>
                 <div>
-                    <label>마감일</label>
-                    <input className="input" type="date" value={recruit.endDate} onChange={e => setRecruit({...recruit, endDate: e.currentTarget.value})}/>
-                </div>
-                <div>
                     <label>내용</label>
                     <textarea className="text-area" value={recruit.content} onChange={e => setRecruit({...recruit, content: e.currentTarget.value})}/>
-                </div>
-                <div>
-                    <label>이미지</label>
-                    <input type="file" 
-                           accept="image/jpeg"
-                           onChange={e => {
-                            const file = e.currentTarget.files[0]
-                            setImage(file)
-                            makeImageURL(file)
-                    }}/>
-                    <img src={imageurl ? imageurl : `/images/recruit/${title}.jpeg`}/>`
                 </div>
                 <button type="submit">수정</button>            
             </form>

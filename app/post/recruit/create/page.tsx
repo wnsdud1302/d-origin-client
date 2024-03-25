@@ -7,7 +7,6 @@ import { useState } from "react";
 
 interface Recruit{
     title: string;
-    endDate: string;
     content: string;
 }
 
@@ -15,7 +14,6 @@ export default function Page(){
 
     const [recruit, setRecruit] = useState<Recruit>({
         title: '',
-        endDate: '',
         content: ''
 
     })
@@ -37,7 +35,7 @@ export default function Page(){
         if(image){
             formData.append('image', image)
         }
-        setRecruit({title: '', endDate: '', content: ''})
+        setRecruit({title: '', content: ''})
         setImageUrl('')
         setImage(undefined)
 
@@ -69,29 +67,10 @@ export default function Page(){
                                onChange={e => setRecruit({...recruit, title: e.target.value})}/>
                     </div>
                     <div>
-                        <p>모집 마감일</p>
-                        <input className="input w-full h-10 border border-black" type="text" 
-                               value={recruit.endDate} 
-                               onChange={e => setRecruit({...recruit, endDate: e.target.value})}/>
-                    </div>
-                    <div>
                         <p>내용</p>
                         <textarea className="text-area w-full h-40 border border-black" 
                                   value={recruit.content} 
                                   onChange={e => setRecruit({...recruit, content: e.target.value})}/>
-                    </div>
-                    <div>
-                        <p>이미지</p>
-                        <input type="file" 
-                            accept="image/jpeg"
-                            onChange={e => {
-                            const file = e.target.files[0]
-                            if(file){
-                                setImage(file)
-                                makeImageUrl(file)
-                            }
-                        }}/>
-                        {imageurl && <img src={imageurl} width='500px'/>}
                     </div>
                     <button type="submit" className="text-xl">등록</button>
             </form>
