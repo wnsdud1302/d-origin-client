@@ -5,7 +5,7 @@ import useSWR from 'swr';
 
 const fetcher = async (url) => fetch(url).then(res => res.json())
 
-export default function page({ params }) {
+export default function Page({ params }) {
     const decode = decodeURIComponent(params.name);
 
     const {data: project, error} = useSWR(`${backendServer}/project/${decode}`, fetcher)
