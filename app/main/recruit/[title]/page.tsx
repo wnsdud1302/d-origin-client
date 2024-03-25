@@ -20,12 +20,11 @@ export default async function Page({params}){
     console.log(data)
     return(
         <div className=" whitespace-pre-wrap">
-            <Link className="ml-10" href="/main/recruit">뒤로가기</Link>
+            <Link className="ml-10" href="/main/recruit">&lt;뒤로가기</Link>
             <div className=" flex mx-auto items-center justify-center mt-16">
                 <div>
                     <h1 className="text-[30px] text-center font-bold">{data.title}</h1>
-                    <h2>마감일: &nbsp;~{data.endDate.replaceAll('-','.')}</h2>
-                    <p>{content}</p>
+                    <p className="mt-10">{content}</p>
                 </div>
             </div>
             

@@ -35,7 +35,6 @@ export default function Page(){
     return (
         <div className='flex items-center justify-center mx-auto'>
             <form onSubmit={ async e => {
-                e.preventDefault()
                 const res = await fetch('/api/news/modify', {
                     method: 'DELETE',
                     body: JSON.stringify(checkedList)

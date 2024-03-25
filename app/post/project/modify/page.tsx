@@ -44,10 +44,7 @@ export default function Page(){
                     method: 'DELETE',
                     body: JSON.stringify(checkedList)
                 })
-                console.log(await res.json())
                 
-                
-
             }}>
                 <ol>
                     {all && all.map((project: Project, index:any) => {
