@@ -98,7 +98,7 @@ export default function Page({params}){
                 </div>
                 <div>
                     <label>이미지</label>
-                    <input type="file" onChange={(e) => {
+                    <input type="file" accept="image/jpeg" onChange={(e) => {
                         const file = e.target.files[0]
                         setImage(file)
                         makeImageURL(file)

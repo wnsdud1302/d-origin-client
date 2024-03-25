@@ -64,14 +64,11 @@ export async function DELETE(req: NextRequest){
     const body = await req.json()
 
     body.forEach(async (title: string) => {
-        try{
             const res = await fetch(`${backendServer}/news/delete?title=${title}`, {
                 method: "DELETE"
             })
             await rm(`./public/images/news/${title}.jpeg`)
-            return NextResponse.json({data: 'success', status: 200})
-        } catch(e){
-            return NextResponse.json({error: e.message, status: 500})
-        }
     })
+
+    return NextResponse.json({data: 'success', status: 200})
 }

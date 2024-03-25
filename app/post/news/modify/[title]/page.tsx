@@ -81,7 +81,7 @@ export default function Page({params}){
                     <textarea className="text-area" value={news.content} onChange={e => setNews({...news, content: e.target.value})}/>
                 </div>
                 <div>
-                    <input type='file' onChange={e => {
+                    <input type='file' accept="image/jpeg" onChange={e => {
                         const file = e.target.files[0]
                         setImage(file)
                         makeImageURL(file)
