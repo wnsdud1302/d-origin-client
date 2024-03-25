@@ -8,6 +8,7 @@ interface Recruit{
   type: string;
   status: string;
   endDate: string;
+  content: string;
 }
 
 const fetcher = async (url) => fetch(url).then(res => res.json())
@@ -38,27 +39,27 @@ export default function Page() {
 
   const RecruitList = ({ data }) => {
 
-    const grid = data.map((element: Recruit, index) => {
+    const grid = data.map((element: Recruit, index:any) => {
       const title = element.title
       const endDate = element.endDate
       const status = element.status
       return (
-        <div key={index}>
-          <Link className='flex items-center justify-center mx-auto' href={`recruit/${title}`}>
-            <p>{title}&nbsp;</p>
-            <p>{endDate}</p>
-            <p>{status}</p>
+        <li className="text-xl h-10 my-auto">
+          <Link key={index} className='flex ' href={`recruit/${title}`}>
+            <p className="mr-10">{index+1}</p>
+            <p>{title}</p>
           </Link>
-        </div>
+        </li>
+
       )
     })
 
     return (
       <div className='w-[90vw]'>
         {data.length === 0 ? <div className='text-center text-2xl my-[30dvh]'>모집이 없습니다.</div>:
-          <div className='grid grid-cols-1 gap-3 relative '>
+          <ol className=''>
             {grid}
-          </div>
+          </ol>
         }
       </div>
     )

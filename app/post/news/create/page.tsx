@@ -56,6 +56,10 @@ function PostNews(){
         }
     }
 
+    if(sendding){
+        redirect('/main/news')
+    }
+
     return(
         <div>
             <div>

@@ -10,6 +10,7 @@ interface Recruit{
     type: string;
     status: string;
     endDate: string;
+    content: string;
 }
 
 export default function Page(){
@@ -18,7 +19,9 @@ export default function Page(){
         title: '',
         type: '', 
         status: '',
-        endDate: ''
+        endDate: '',
+        content: ''
+
     })
     const [image, setImage] = useState<File>()
     const [imageurl, setImageUrl] = useState<string>('')
@@ -38,7 +41,7 @@ export default function Page(){
         if(image){
             formData.append('image', image)
         }
-        setRecruit({title: '', type: '', status: '', endDate: ''})
+        setRecruit({title: '', type: '', status: '', endDate: '', content: ''})
         setImageUrl('')
         setImage(undefined)
 
@@ -86,6 +89,12 @@ export default function Page(){
                         <input className="input w-full h-10 border border-black" type="text" 
                                value={recruit.endDate} 
                                onChange={e => setRecruit({...recruit, endDate: e.target.value})}/>
+                    </div>
+                    <div>
+                        <p>내용</p>
+                        <textarea className="text-area w-full h-40 border border-black" 
+                                  value={recruit.content} 
+                                  onChange={e => setRecruit({...recruit, content: e.target.value})}/>
                     </div>
                     <div>
                         <p>이미지</p>

@@ -11,7 +11,8 @@ interface Recruit{
     type: string;
     status: string;
     endDate: string;
-  }
+    content: string;
+}
 
 const fetcher = async (url: any) => fetch(url).then(res => res.json())
 
@@ -29,7 +30,8 @@ export default function Page({params}){
         title: '',
         type: '',
         status: '',
-        endDate: ''
+        endDate: '',
+        content: ''
     })
 
     const [image, setImage] = useState<File>()
@@ -93,6 +95,10 @@ export default function Page({params}){
                 <div>
                     <label>마감일</label>
                     <input className="input" type="date" value={recruit.endDate} onChange={e => setRecruit({...recruit, endDate: e.currentTarget.value})}/>
+                </div>
+                <div>
+                    <label>내용</label>
+                    <textarea className="text-area" value={recruit.content} onChange={e => setRecruit({...recruit, content: e.currentTarget.value})}/>
                 </div>
                 <div>
                     <label>이미지</label>

@@ -45,6 +45,7 @@ export async function PUT(req: any){
         type: body.get('type'),
         status: body.get('status'),
         endDate: body.get('endDate'),
+        content: body.get('content')
     }
 
     const file = body.get('image') as File

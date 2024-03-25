@@ -20,7 +20,8 @@ export async function POST(req: NextRequest){
             title: body.get('title'),
             type: body.get('type'),
             status: body.get('status'),
-            endDate: body.get('endDate')
+            endDate: body.get('endDate'),
+            content: body.get('content')
         }
 
         const file = body.get('image') as File
