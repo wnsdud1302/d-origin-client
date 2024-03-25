@@ -40,7 +40,8 @@ const NewsList = ({ data }) => {
     return (
       <div key={index}>
         <Link className=' overflow-hidden' href={`news/${title}`}>
-          <Image unoptimized={true} className='flex items-center justify-center object-cover h-[200px] w-[80%] mx-auto' 
+          <Image onContextMenu={e => e.preventDefault()}
+                 className='flex items-center justify-center object-cover h-[200px] w-[300px] mx-auto' 
                  src={`${frontendServer}/api/news/image?title=${element.title}`} 
                  alt={element.title} 
                  width={1000} height={300}/>

@@ -43,8 +43,9 @@ export default function Page() {
       return (
         <div key={index}>
           <Link className='' href={`project/${name}`}>
-            <Image className='flex items-center justify-center object-cover h-[200px] w-[80%] mx-auto' 
-             src={`${frontendServer}/api/project/image?name=${name}`} alt={element.name} width={1000} height={300}/>
+            <Image onContextMenu={e=>e.preventDefault()}
+                   className='flex items-center justify-center object-cover h-[200px] w-[300px] mx-auto' 
+                   src={`${frontendServer}/api/project/image?name=${name}`} alt={element.name} width={1000} height={300}/>
             <p className='text-center mt-2'>{element.name}</p>
           </Link>
         </div>
