@@ -6,7 +6,6 @@ import React, { FormEvent, useState } from 'react';
 import useSWR from 'swr';
 
 interface News{
-    id: number,
     title: string,
     content: string
 }
@@ -20,12 +19,12 @@ export default function Page(){
         redirect('/api/auth/signin')
     }
 
-    const [checkedList, setcheckedList] = useState<number[]>([])
+    const [checkedList, setcheckedList] = useState<string[]>([])
 
     const {data: list, error: listError} = useSWR('/api/news/list', fetcher)
 
     const checkHandler = (e: FormEvent<HTMLInputElement>) => {
-        const value = Number(e.currentTarget.value)
+        const value = (e.currentTarget.value)
         if(checkedList.includes(value)){
             setcheckedList(checkedList.filter(item => item !== value))
         } else {
@@ -41,13 +40,12 @@ export default function Page(){
                     method: 'DELETE',
                     body: JSON.stringify(checkedList)
                 })
-                console.log(await res.json())
             }}>
                 <ol>
                     {list && list.map((news: News, index: any) => {
                         return (
                             <div key={index} className='text-xl'>
-                                <input className='mr-5 w-5 h-5' type='checkbox' value={news.id} checked={checkedList.includes(news.id)} onChange={checkHandler}/>
+                                <input className='mr-5 w-5 h-5' type='checkbox' value={news.title} checked={checkedList.includes(news.title)} onChange={checkHandler}/>
                                 <Link href={`modify/${news.title}`}>{news.title}</Link>
                             </div>
                         )

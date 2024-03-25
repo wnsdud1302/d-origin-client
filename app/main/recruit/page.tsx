@@ -56,7 +56,7 @@ export default function Page() {
     return (
       <div className='w-[90vw]'>
         {data.length === 0 ? <div className='text-center text-2xl my-[30dvh]'>모집이 없습니다.</div>:
-          <div className='grid grid-cols-3 gap-3 relative '>
+          <div className='grid grid-cols-1 gap-3 relative '>
             {grid}
           </div>
         }
