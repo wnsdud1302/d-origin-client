@@ -8,10 +8,10 @@ import useSWR from "swr";
 
 interface Recruit{
     title: string;
-    recruitType: string;
-    recruitStatus: string;
-    recruitendDate: string;
-}
+    type: string;
+    status: string;
+    endDate: string;
+  }
 
 const fetcher = async (url: any) => fetch(url).then(res => res.json())
 
@@ -27,9 +27,9 @@ export default function Page({params}){
     const {data, error} = useSWR(`/api/recruit/modify?title=${title}`, fetcher)
     const [recruit, setRecruit] = useState<Recruit>({
         title: '',
-        recruitType: '',
-        recruitStatus: '',
-        recruitendDate: ''
+        type: '',
+        status: '',
+        endDate: ''
     })
 
     const [image, setImage] = useState<File>()
@@ -65,7 +65,7 @@ export default function Page({params}){
     }
 
     if (sendding){
-        redirect('main/recruit')
+        redirect('/main/recruit')
     }
 
     if(!pendding && data){
@@ -84,22 +84,24 @@ export default function Page({params}){
                 </div>
                 <div>
                     <label>모집 유형</label>
-                    <input className="input" type="text" value={recruit.recruitType} onChange={e => setRecruit({...recruit, recruitType: e.currentTarget.value})}/>
+                    <input className="input" type="text" value={recruit.type} onChange={e => setRecruit({...recruit, type: e.currentTarget.value})}/>
                 </div>
                 <div>
                     <label>모집 상태</label>
-                    <input className="input" type="text" value={recruit.recruitStatus} onChange={e => setRecruit({...recruit, recruitStatus: e.currentTarget.value})}/>
+                    <input className="input" type="text" value={recruit.status} onChange={e => setRecruit({...recruit, status: e.currentTarget.value})}/>
                 </div>
                 <div>
                     <label>마감일</label>
-                    <input className="input" type="date" value={recruit.recruitendDate} onChange={e => setRecruit({...recruit, recruitendDate: e.currentTarget.value})}/>
+                    <input className="input" type="date" value={recruit.endDate} onChange={e => setRecruit({...recruit, endDate: e.currentTarget.value})}/>
                 </div>
                 <div>
                     <label>이미지</label>
-                    <input type="file" onChange={e => {
-                        const file = e.currentTarget.files[0]
-                        setImage(file)
-                        makeImageURL(file)
+                    <input type="file" 
+                           accept="image/jpeg"
+                           onChange={e => {
+                            const file = e.currentTarget.files[0]
+                            setImage(file)
+                            makeImageURL(file)
                     }}/>
                     <img src={imageurl ? imageurl : `/images/recruit/${title}.jpeg`}/>`
                 </div>

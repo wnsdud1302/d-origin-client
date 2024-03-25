@@ -18,7 +18,9 @@ export async function POST(req: NextRequest){
 
         const recruit = {
             title: body.get('title'),
-            content: body.get('content')
+            type: body.get('type'),
+            status: body.get('status'),
+            endDate: body.get('endDate')
         }
 
         const file = body.get('image') as File

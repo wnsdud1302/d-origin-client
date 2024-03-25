@@ -41,9 +41,9 @@ export async function PUT(req: any){
 
     const recruit = {
         title: body.get('title'),
-        recruitType: body.get('recruitType'),
-        recruitStatus: body.get('recruitStatus'),
-        recruitendDate: body.get('recruitendDate'),
+        type: body.get('type'),
+        status: body.get('status'),
+        endDate: body.get('endDate'),
     }
 
     const file = body.get('image') as File

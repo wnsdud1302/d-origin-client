@@ -7,24 +7,18 @@ import { useState } from "react";
 
 interface Recruit{
     title: string;
-    recruitType: string;
-    recruitStatus: string;
-    recruitendDate: string;
+    type: string;
+    status: string;
+    endDate: string;
 }
 
 export default function Page(){
 
-    const {data: session, status } = useSession()
-
-    if(status === 'unauthenticated' || session?.error){
-        redirect('/api/auth/signin')
-    }
-
     const [recruit, setRecruit] = useState<Recruit>({
         title: '',
-        recruitType: '',
-        recruitStatus: '',
-        recruitendDate: ''
+        type: '', 
+        status: '',
+        endDate: ''
     })
     const [image, setImage] = useState<File>()
     const [imageurl, setImageUrl] = useState<string>('')
@@ -44,7 +38,7 @@ export default function Page(){
         if(image){
             formData.append('image', image)
         }
-        setRecruit({title: '', recruitType: '', recruitStatus: '', recruitendDate: ''})
+        setRecruit({title: '', type: '', status: '', endDate: ''})
         setImageUrl('')
         setImage(undefined)
 
@@ -61,7 +55,7 @@ export default function Page(){
     }
 
     if (sendding){
-        redirect('main/recruit')
+        redirect('/main/recruit')
     }
 
     return(
@@ -78,20 +72,20 @@ export default function Page(){
                     <div>
                         <p>모집 유형</p>
                         <input className="input w-full h-10 border border-black" type="text" 
-                               value={recruit.recruitType} 
-                               onChange={e => setRecruit({...recruit, recruitType: e.target.value})}/>
+                               value={recruit.type} 
+                               onChange={e => setRecruit({...recruit, type: e.target.value})}/>
                     </div>
                     <div>
                         <p>모집 상태</p>
                         <input className="input w-full h-10 border border-black" type="text" 
-                               value={recruit.recruitStatus} 
-                               onChange={e => setRecruit({...recruit, recruitStatus: e.target.value})}/>
+                               value={recruit.status} 
+                               onChange={e => setRecruit({...recruit, status: e.target.value})}/>
                     </div>
                     <div>
                         <p>모집 마감일</p>
                         <input className="input w-full h-10 border border-black" type="text" 
-                               value={recruit.recruitendDate} 
-                               onChange={e => setRecruit({...recruit, recruitendDate: e.target.value})}/>
+                               value={recruit.endDate} 
+                               onChange={e => setRecruit({...recruit, endDate: e.target.value})}/>
                     </div>
                     <div>
                         <p>이미지</p>

@@ -3,6 +3,13 @@ import { useState } from "react";
 import useSWR from "swr";
 import Link from 'next/link'
 
+interface Recruit{
+  title: string;
+  type: string;
+  status: string;
+  endDate: string;
+}
+
 const fetcher = async (url) => fetch(url).then(res => res.json())
 
 export default function Page() {
@@ -31,12 +38,14 @@ export default function Page() {
 
   const RecruitList = ({ data }) => {
 
-    const grid = data.map((element, index) => {
+    const grid = data.map((element: Recruit, index) => {
       const title = element.title
       const endDate = element.endDate
+      const status = element.status
       return (
         <div key={index}>
           <Link className='flex items-center justify-center mx-auto' href={`recruit/${title}`}>
+            {title} {endDate} {status}
           </Link>
         </div>
       )
