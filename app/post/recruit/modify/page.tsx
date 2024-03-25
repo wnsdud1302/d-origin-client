@@ -47,7 +47,7 @@ export default function Page(){
                 console.log(await res.json())
             }}>
                 <ol>
-                    {data && data.map((recruit: Recruit, index:any) => {
+                    {data.status !== 500 && data.map((recruit: Recruit, index:any) => {
                         return (
                             <div key={index} className='text-xl'>
                             <input className='mr-5 w-5 h-5' type='checkbox' value={recruit.title} checked={checkedList.includes(recruit.title)} onChange={checkHandler}/>

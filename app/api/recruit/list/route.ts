@@ -3,7 +3,7 @@ import { backendServer } from "../../../config";
 
 export async function GET(req: NextRequest){
     try{
-        const res = await fetch(`${backendServer}}/recruit/list`, {
+        const res = await fetch(`${backendServer}/recruit/list`, {
             cache: "no-store"
         })
         const data = await res.json()

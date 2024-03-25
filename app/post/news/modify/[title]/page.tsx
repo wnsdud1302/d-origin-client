@@ -61,7 +61,7 @@ export default function Page({params}){
     }
 
     if(sendding){
-        redirect('post/news/modify')
+        redirect('/post/news/modify')
     }
 
     if(!pendding && data){
