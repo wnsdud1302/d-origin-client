@@ -9,11 +9,6 @@ import {frontendServer} from '../../config'
 
 const fetcher = async (url) => fetch(url).then(res => res.json())
 
-const getKey = (pageIndex, prevData) => {
-  if(prevData && !prevData.length) return null;
-  return `/api/news?page=${pageIndex}`
-}
-
 export default function Page() {
 
   const [pageIndex, setPageIndex] = useState(0);
@@ -41,10 +36,14 @@ export default function Page() {
 const NewsList = ({ data }) => {
   
   const grid = data.map((element, index) => {
+    const title = element.title
     return (
       <div key={index}>
-        <Link className=' overflow-hidden' href={`news/${element.title}`}>
-          <Image unoptimized={true} className='newsImage h-[auto] max-w-[100%] overflow-hidden' src={`${frontendServer}/api/news/image?title=${element.title}`} alt={element.title} width={500} height={300}/>
+        <Link className=' overflow-hidden' href={`news/${title}`}>
+          <Image unoptimized={true} className='flex items-center justify-center object-cover h-[200px] w-[80%] mx-auto' 
+                 src={`${frontendServer}/api/news/image?title=${element.title}`} 
+                 alt={element.title} 
+                 width={1000} height={300}/>
           <p className=' text-center mt-2'>{element.title}</p>
         </Link>
       </div>
@@ -53,9 +52,9 @@ const NewsList = ({ data }) => {
 
 
   return (
-    <div className='h-[50dvh]'>
+    <div className='w-[90vw]'>
       {data.length === 0 ? <div className='text-center text-2xl my-[30dvh]'>뉴스가 없습니다.</div>:
-        <div className='grid grid-cols-3 gap-4 relative '>
+        <div className='grid grid-cols-3 gap-3 relative '>
           {grid}
         </div>
       }
