@@ -8,8 +8,6 @@ import useSWR from "swr";
 
 interface Recruit{
     title: string;
-    type: string;
-    status: string;
     endDate: string;
     content: string;
 }
@@ -28,8 +26,6 @@ export default function Page({params}){
     const {data, error} = useSWR(`/api/recruit/modify?title=${title}`, fetcher)
     const [recruit, setRecruit] = useState<Recruit>({
         title: '',
-        type: '',
-        status: '',
         endDate: '',
         content: ''
     })
@@ -83,14 +79,6 @@ export default function Page({params}){
                 <div>
                     <label>제목</label>
                     <input className="input" type="text" value={recruit.title} onChange={e => setRecruit({...recruit, title: e.currentTarget.value})}/>
-                </div>
-                <div>
-                    <label>모집 유형</label>
-                    <input className="input" type="text" value={recruit.type} onChange={e => setRecruit({...recruit, type: e.currentTarget.value})}/>
-                </div>
-                <div>
-                    <label>모집 상태</label>
-                    <input className="input" type="text" value={recruit.status} onChange={e => setRecruit({...recruit, status: e.currentTarget.value})}/>
                 </div>
                 <div>
                     <label>마감일</label>

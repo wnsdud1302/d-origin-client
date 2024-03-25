@@ -42,8 +42,6 @@ export async function PUT(req: any){
 
     const recruit = {
         title: body.get('title'),
-        type: body.get('type'),
-        status: body.get('status'),
         endDate: body.get('endDate'),
         content: body.get('content')
     }

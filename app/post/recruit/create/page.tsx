@@ -7,8 +7,6 @@ import { useState } from "react";
 
 interface Recruit{
     title: string;
-    type: string;
-    status: string;
     endDate: string;
     content: string;
 }
@@ -17,8 +15,6 @@ export default function Page(){
 
     const [recruit, setRecruit] = useState<Recruit>({
         title: '',
-        type: '', 
-        status: '',
         endDate: '',
         content: ''
 
@@ -41,7 +37,7 @@ export default function Page(){
         if(image){
             formData.append('image', image)
         }
-        setRecruit({title: '', type: '', status: '', endDate: '', content: ''})
+        setRecruit({title: '', endDate: '', content: ''})
         setImageUrl('')
         setImage(undefined)
 
@@ -71,18 +67,6 @@ export default function Page(){
                         <input className="input w-full h-10 border border-black" type="text" 
                                value={recruit.title} 
                                onChange={e => setRecruit({...recruit, title: e.target.value})}/>
-                    </div>
-                    <div>
-                        <p>모집 유형</p>
-                        <input className="input w-full h-10 border border-black" type="text" 
-                               value={recruit.type} 
-                               onChange={e => setRecruit({...recruit, type: e.target.value})}/>
-                    </div>
-                    <div>
-                        <p>모집 상태</p>
-                        <input className="input w-full h-10 border border-black" type="text" 
-                               value={recruit.status} 
-                               onChange={e => setRecruit({...recruit, status: e.target.value})}/>
                     </div>
                     <div>
                         <p>모집 마감일</p>

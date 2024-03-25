@@ -5,8 +5,6 @@ import Link from 'next/link'
 
 interface Recruit{
   title: string;
-  type: string;
-  status: string;
   endDate: string;
   content: string;
 }
@@ -42,7 +40,6 @@ export default function Page() {
     const grid = data.map((element: Recruit, index:any) => {
       const title = element.title
       const endDate = element.endDate
-      const status = element.status
       return (
         <li className="text-xl h-10 my-auto" key={index}>
           <Link className='flex ' href={`recruit/${title}`}>
