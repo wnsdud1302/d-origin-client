@@ -1,13 +1,14 @@
 'use client'
 import { frontendServer, backendServer } from '../../../config';
 import Image from 'next/image';
+import useSWR from 'swr';
 
 const fetcher = async (url) => fetch(url).then(res => res.json())
 
-export default async function page({ params }) {
+export default function page({ params }) {
     const decode = decodeURIComponent(params.name);
 
-    const {data: project, error} = useSWR(`/api/project/modify=${decode}`, fetcher)
+    const {data: project, error} = useSWR(`${backendServer}/project/${decode}`, fetcher)
 
     return (
         <div className='fade-in-up mx-auto mt-[50px]'>
