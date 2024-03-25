@@ -11,7 +11,7 @@ interface Recruit{
   content: string;
 }
 
-const fetcher = async (url) => fetch(url).then(res => res.json())
+const fetcher = async (url:string) => fetch(url).then(res => res.json())
 
 export default function Page() {
 
@@ -44,8 +44,8 @@ export default function Page() {
       const endDate = element.endDate
       const status = element.status
       return (
-        <li className="text-xl h-10 my-auto">
-          <Link key={index} className='flex ' href={`recruit/${title}`}>
+        <li className="text-xl h-10 my-auto" key={index}>
+          <Link className='flex ' href={`recruit/${title}`}>
             <p className="mr-10">{index+1}</p>
             <p>{title}</p>
           </Link>

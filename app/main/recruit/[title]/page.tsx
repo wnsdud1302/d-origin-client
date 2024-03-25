@@ -5,6 +5,7 @@ interface Recruit{
     type: string;
     status: string;
     endDate: string;
+    content: string;
 }
 
 export default async function Page({params}){
@@ -16,6 +17,7 @@ export default async function Page({params}){
         <div>
             <h1>{data.title}</h1>
             <h2>{data.type}</h2>
+            <p>{data.content}</p>
         </div>
     )
 }
