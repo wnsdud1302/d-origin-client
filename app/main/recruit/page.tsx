@@ -45,7 +45,9 @@ export default function Page() {
       return (
         <div key={index}>
           <Link className='flex items-center justify-center mx-auto' href={`recruit/${title}`}>
-            {title} {endDate} {status}
+            <p>{title}&nbsp;</p>
+            <p>{endDate}</p>
+            <p>{status}</p>
           </Link>
         </div>
       )

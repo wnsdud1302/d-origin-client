@@ -69,6 +69,7 @@ export async function DELETE(req: NextRequest){
                 method: "DELETE"
             })
             await rm(`./public/images/news/${title}.jpeg`)
+            return NextResponse.json({data: 'success', status: 200})
         } catch(e){
             return NextResponse.json({error: e.message, status: 500})
         }

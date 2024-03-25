@@ -37,6 +37,7 @@ export async function PUT(req: any){
     }
 
     const query = req.nextUrl.searchParams
+    const title = decodeURIComponent(query.get('title'))
     const body = await req.formData()
 
     const recruit = {
