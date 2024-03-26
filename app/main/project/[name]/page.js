@@ -15,6 +15,7 @@ export default function Page({ params }) {
             <div className=' bg-white w-[60px] h-[5px] mx-auto mb-10px'></div>
             <h1 className=' text-center text-[40px]'>{project.name}</h1>
             <Image className='flex items-center justify-center mx-auto'
+                   alt={project.name}
                    src={`${frontendServer}/api/project/image?name=${project.name}`} 
                    onContextMenu={e=>e.preventDefault()} 
                    width={1000} height={300}/>
