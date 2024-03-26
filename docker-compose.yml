@@ -38,6 +38,8 @@ services:
     networks:
       mysql-networks:
         ipv4_address: 172.15.0.5
+    volumes:
+      - ../homepage/public:/etc/nginx
 
 
 networks:
