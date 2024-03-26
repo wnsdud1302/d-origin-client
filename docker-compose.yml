@@ -34,7 +34,7 @@ services:
     image: nginx:latest
     container_name: my-nginx
     ports:
-      - 80:3080
+      - 3080:80
     networks:
       mysql-networks:
         ipv4_address: 172.15.0.5
