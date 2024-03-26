@@ -30,6 +30,14 @@ services:
         ipv4_address: 172.15.0.4
     volumes:
       - ../homepage/public:/app/public
+  my-nginx:
+    image: nginx:latest
+    container_name: my-nginx
+    ports:
+      - 80:80
+    networks:
+      mysql-networks:
+        ipv4_address: 172.0.15.0.5
 
 
 networks:

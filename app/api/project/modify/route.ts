@@ -26,7 +26,7 @@ export async function GET(req: NextRequest){
         const project = await res.json()
         return NextResponse.json(project)
     } catch(e){
-        return NextResponse.json({error: e.message, status: 500})
+        return NextResponse.error()
     }
 }
 

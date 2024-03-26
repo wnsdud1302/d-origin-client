@@ -8,6 +8,6 @@ export async function GET(req: NextRequest){
         return new Response(file, {headers: {'Content-Type': 'image/jpeg'}})
     
     } catch(e){
-        return new Response(e.message, {status: 500})
+        return NextResponse.error()
     }
 }

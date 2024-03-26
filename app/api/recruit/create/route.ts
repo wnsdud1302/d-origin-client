@@ -31,6 +31,6 @@ export async function POST(req: NextRequest){
         const result = await res.json()
         return NextResponse.json({data: {...result}, status: 200})
     } catch(e){
-        return NextResponse.json({error: e.message, status: 500})
+        return NextResponse.error()
     }
 }

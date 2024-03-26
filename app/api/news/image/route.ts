@@ -1,5 +1,5 @@
 import { readFile } from "fs/promises";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest){
     const title = req.nextUrl.searchParams.get('title')
@@ -7,6 +7,6 @@ export async function GET(req: NextRequest){
         const file = await readFile('./public/images/news/' + title + '.jpeg')
         return new Response(file, {headers: {'Content-Type': 'image/jpeg'}})
     } catch(e){
-        return new Response(e.message, {status: 500})
+        return NextResponse.error()
     }
 }
