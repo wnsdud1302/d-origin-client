@@ -2,8 +2,8 @@ services:
   mysql-conatiner:
     image: mysql:8.0.33
     container_name: mysql
-    ports:
-      - 3306:3306
+    expose:
+      - 3306
     networks:
       mysql-networks:
         ipv4_address: 172.15.0.2
@@ -15,8 +15,8 @@ services:
   my-server:
     image: server:latest
     container_name: my-server
-    ports:
-      - 8080:8080
+    expose:
+      - 8080
     networks:
       mysql-networks:
         ipv4_address: 172.15.0.3
