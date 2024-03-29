@@ -4,11 +4,6 @@ import Link from 'next/link'
 export default function page(){
     return(
       <div className="home">
-        <div className="mb-8 ml-5">
-                <Link className="return" href={`/`}>
-                    <p>&lt;&nbsp;</p>
-                </Link>
-        </div>
         <div className="">
           <h1 className="text-center text-[32px] mt-[30px] font-bold">DESIGN . ORIGIN . ARCHITECT</h1>
           <br/>
