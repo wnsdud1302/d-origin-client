@@ -6,6 +6,11 @@ import Map from './map';
 export default function page() {
     return (
         <div className="flex justify-center items-center mx-auto h-[100dvh]">
+            <div className="mb-8 ml-5">
+                <Link className="return" href={`/`}>
+                    <p>&lt;&nbsp;</p>
+                </Link>
+            </div>
             <div>
                 <Map />
                 <div className='mt-[20px] flex'>
