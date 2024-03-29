@@ -2,6 +2,7 @@
 import { frontendServer, backendServer } from '../../../config';
 import Image from 'next/image';
 import useSWR from 'swr';
+import Link from 'next/link';
 
 const fetcher = async (url) => fetch(url).then(res => res.json())
 
@@ -11,7 +12,12 @@ export default function Page({ params }) {
     const {data: project, error} = useSWR(`/api/project/modify?name=${decode}`, fetcher)
 
     return (
-        <div className='fade-in-up mx-auto mt-[50px]'>
+        <div className='fade-in-up mx-auto'>
+            <div className='mb-8 ml-5'>
+                <Link className='return' href='/main/project'>
+                    <p>&lt;&nbsp;</p>
+                </Link>
+            </div>
             { project &&
             <><div className=' bg-white w-[60px] h-[5px] mx-auto mb-10px'></div>
                 <h1 className=' text-center text-[40px]'>{project.name}</h1>

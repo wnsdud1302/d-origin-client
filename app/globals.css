@@ -62,6 +62,14 @@ body {
     animation: fadeInUp 1s;
   }
 
+  .return {
+    font-size: 24px;
+  }
+  .return :hover {
+    font-size: 24px;
+    font-weight: bolder;
+  }
+
     @keyframes fadeInUp {
       0% {
         opacity: 0;
