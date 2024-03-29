@@ -1,6 +1,5 @@
-import Image from 'next/image';
-import Script from 'next/script';
 import Map from './map';
+import Link from 'next/link';
 
 
 export default function page() {

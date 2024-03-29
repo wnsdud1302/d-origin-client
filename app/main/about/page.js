@@ -1,4 +1,5 @@
 import './about.css'
+import Link from 'next/link'
 
 export default function page(){
     return(
