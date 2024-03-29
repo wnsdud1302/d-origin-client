@@ -15,7 +15,7 @@ export default function Page({params}) {
         <div className="fade-in-up mx-auto">
             <div className="mb-8 ml-5">
                 <Link className="return" href={`/main/news`}>
-                    <p>&lt;&nbsp;돌아가기</p>
+                    <p>&lt;&nbsp;</p>
                 </Link>
             </div>
             {news &&
