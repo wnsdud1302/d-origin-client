@@ -18,7 +18,7 @@ const Map: React.FC = () => {
 
             const marker = new window.naver.maps.Marker({
                 position: new window.naver.maps.LatLng(37.67865, 127.0457),
-                title: '우리회사',
+                title: '디오리진 건축사무소',
                 map: map,
             });
         };
