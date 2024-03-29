@@ -11,7 +11,7 @@ export default function Page({params}) {
     const {data: news, error} = useSWR(`/api/news/modify?title=${decode}`, fetcher)
 
     return (
-        <div>
+        <div className="fade-in-up mx-auto mt-[50px]">
             {news &&
             <><div className='bg-white w-[60px] h-[5px] mx-auto mb-[10px] relative mt-[40px]' />
             <h1 className='newsTitle mb-[10px]'>{news.title}</h1>
