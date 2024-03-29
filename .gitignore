@@ -1,10 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# environment
-.env
-.env.local
-/app/config.js
-
 
 # dependencies
 /node_modules
