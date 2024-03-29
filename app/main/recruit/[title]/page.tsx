@@ -20,6 +20,11 @@ export default async function Page({params}){
     console.log(data)
     return(
         <div className=" whitespace-pre-wrap">
+            <div className="mb-8 ml-5">
+                <Link className="return" href={`/main/recruit`}>
+                    <p>&lt;&nbsp;</p>
+                </Link>
+            </div>
             <Link className="ml-10" href="/main/recruit">&lt;뒤로가기</Link>
             <div className=" flex mx-auto items-center justify-center mt-16">
                 <div>
