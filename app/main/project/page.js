@@ -54,7 +54,7 @@ export default function Page() {
   
   
     return (
-      <div className='w-[90vw]'>
+      <div>
         {data.length === 0 ? <div className='text-center text-2xl my-[30dvh]'>프로젝트가 없습니다.</div>:
           <div className='grid grid-cols-3 gap-3 relative '>
             {grid}
