@@ -19,12 +19,12 @@ export default function Page() {
     const {data, error} = useSWR(`/api/project?page=${pageIndex}`, fetcher)
   
     return (
-      <div className=" w-[1200px] mt-[50px] mx-auto items-center">
+      <div className=" w-[1200px] mx-auto items-center">
         <div className="mb-8 ml-5">
                 <Link className="return" href={`/`}>
                     <p>&lt;&nbsp;</p>
                 </Link>
-            </div>
+        </div>
         <div className='bg-white w-[60px] h-[5px] mx-auto mb-[10px] relative'/>
         <h1 className='text-2xl font-bold text-center'>Project</h1>
         {data ?

@@ -18,7 +18,12 @@ export default function Page() {
     const {data, error} = useSWR(`/api/recruit?page=${pageIndex}`, fetcher)
   
     return (
-      <div className=" w-[90dvw] h-[90dvh] mt-[50px] mx-auto items-center">
+      <div className=" w-[90dvw] h-[90dvh] mx-auto items-center">
+        <div className="mb-8 ml-5">
+                <Link className="return" href={`/`}>
+                    <p>&lt;&nbsp;</p>
+                </Link>
+        </div>
         <div className='bg-white w-[60px] h-[5px] mx-auto mb-[10px] relative'/>
         <h1 className='text-2xl font-bold text-center'>Recruit</h1>
         {data ?
