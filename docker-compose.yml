@@ -10,7 +10,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ThisisDoriginDatabase
     volumes:
-      - ../mysql:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
       - /tmp:/tmp
   my-server:
     image: server:latest
@@ -29,7 +29,7 @@ services:
       mysql-networks:
         ipv4_address: 172.15.0.4
     volumes:
-      - ../homepage/public:/app/public
+      - ./homepage/public:/app/public
 
 
 networks:
