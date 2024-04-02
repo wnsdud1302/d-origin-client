@@ -20,14 +20,14 @@ export default function Page({params}) {
             </div>
             {news &&
             <><div className='bg-white w-[60px] h-[5px] mx-auto mb-[10px] relative mt-[40px]' />
-            <h1 className='newsTitle mb-[10px]'>{news.title}</h1>
+            <h1 className='newsTitle mb-8'>{news.title}</h1>
                 <div>
                         <Image src={`${frontendServer}/api/news/image?title=${news.title}`}
                             className="flex items-center justify-center mx-auto w-[700px]"
                             onContextMenu={e => e.preventDefault()}
                             alt={news.title}
                             width={1000} height={300} />
-                        <p className='mt-[10px] mx-auto w-[800px] whitespace-pre-wrap'>
+                        <p className='mt-[10px] mx-auto w-[700px] whitespace-pre-wrap'>
                             {news.content}
                         </p>
 

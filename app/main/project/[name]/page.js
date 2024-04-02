@@ -20,14 +20,14 @@ export default function Page({ params }) {
             </div>
             { project &&
             <><div className=' bg-white w-[60px] h-[5px] mx-auto mb-10px'></div>
-                <h1 className=' text-center text-[40px]'>{project.name}</h1>
+                <h1 className=' text-center text-[40px] mb-8'>{project.name}</h1>
                 <div>
                     <Image className='flex items-center justify-center mx-auto w-[700px]'
                         alt={project.name}
                         src={` ${frontendServer}/api/project/image?name=${project.name}`}
                         onContextMenu={e => e.preventDefault()}
                         width={1000} height={300} />
-                    <div className=' grid grid-cols-2 mt-[20px] mx-auto w-[1000px]'>
+                    <div className=' grid grid-cols-2 mt-[20px] mx-auto w-[700px]'>
                         <DescribeTable project={project} />
                         <p className='mt-[0px] text-[15px] whitespace-pre-wrap'>{project.description}</p>
                     </div>
