@@ -27,7 +27,7 @@ export default function Page({params}) {
                             onContextMenu={e => e.preventDefault()}
                             alt={news.title}
                             width={1000} height={300} />
-                        <p className='mt-[10px] mx-auto w-[700px] whitespace-pre-wrap'>
+                        <p className='mt-[30px] mx-auto w-[700px] whitespace-pre-wrap'>
                             {news.content}
                         </p>
 
