@@ -18,7 +18,7 @@ const handler = NextAuth({
                     headers: { "Content-Type": "application/json" }
                 })
                 const user = await res.json()
-                if(res.ok && user.accesstoken){
+                if(res.ok){
                     return user
                 }
                 else{
