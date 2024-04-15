@@ -1,5 +1,4 @@
 import NextAuth, { CookiesOptions, NextAuthOptions } from "next-auth";
-import { JWT, getToken } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { refreshAccessToken, verifyJwtAccessToken } from "../../lib/jwt";
 
