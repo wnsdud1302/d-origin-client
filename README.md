@@ -21,9 +21,6 @@ d-origin 건축사무소 홈페이지 제작 의뢰를 받아 제작한 홈페�
 - 건축사무소 주소, 지도, 이메일, 전화번호 및 팩스번호가 나와있습니다.
 
 
-## 프로젝트 개발 기간
-2024.2.14 ~ 2024.3.22
-
 ## 개발환경
 <div>
   <img src='https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E'/>
